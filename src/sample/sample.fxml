@@ -63,6 +63,11 @@
                         <Font name="Gadugi" size="20.0" />
                      </font>
                   </Button>
+                  <Label fx:id="lblLogin" layoutX="212.0" layoutY="507.0" textAlignment="CENTER" textFill="#6f6f6f">
+                     <font>
+                        <Font name="Gadugi" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </items>
