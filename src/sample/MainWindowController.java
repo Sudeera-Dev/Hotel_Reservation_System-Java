@@ -22,13 +22,12 @@ import java.util.ResourceBundle;
 public class MainWindowController implements Initializable {
 
     ObservableList<String> ciTimeList = FXCollections.observableArrayList("AM","PM");
-    ObservableList<String> coTimeList = FXCollections.observableArrayList("AM","PM");
     ObservableList<String> pkgsList = FXCollections.observableArrayList("Package 1","Package 2","Package 3");
     ObservableList<String> timeSlotList = FXCollections.observableArrayList("Day","Night");
 
     @FXML Button navBtn1,navBtn2,navBtn3,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10;
     @FXML Pane rsPane,rrPane,sPane;
-    @FXML ChoiceBox ciTime,coTime,pkgs,timeSlot;
+    @FXML ChoiceBox ciTime,pkgs,timeSlot;
 
     private int ro1=0,ro2=0,ro3=0,ro4=0,ro5=0,ro6=0,ro7=0,ro8=0,ro9=0,ro10=0;
 
@@ -36,7 +35,6 @@ public class MainWindowController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         navBtn1.setStyle("-fx-background-color: #a3b5d9");
         ciTime.setItems(ciTimeList);
-        coTime.setItems(coTimeList);
         pkgs.setItems(pkgsList);
         timeSlot.setItems(timeSlotList);
         rsPane.toFront();
