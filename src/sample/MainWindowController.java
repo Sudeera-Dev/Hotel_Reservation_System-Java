@@ -25,8 +25,8 @@ public class MainWindowController implements Initializable {
     ObservableList<String> pkgsList = FXCollections.observableArrayList("Package 1","Package 2","Package 3");
     ObservableList<String> timeSlotList = FXCollections.observableArrayList("Day","Night");
 
-    @FXML Button navBtn1,navBtn2,navBtn3,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10;
-    @FXML Pane rsPane,rrPane,sPane;
+    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10;
+    @FXML Pane rsPane,rrPane,sPane,repPane;
     @FXML ChoiceBox ciTime,pkgs,timeSlot;
 
     private int ro1=0,ro2=0,ro3=0,ro4=0,ro5=0,ro6=0,ro7=0,ro8=0,ro9=0,ro10=0;
@@ -44,6 +44,7 @@ public class MainWindowController implements Initializable {
         navBtn1.setStyle("-fx-background-color: #a3b5d9");
         navBtn2.setStyle("-fx-background-color: #0c447b");
         navBtn3.setStyle("-fx-background-color: #0c447b");
+        navBtn4.setStyle("-fx-background-color: #0c447b");
         rsPane.toFront();
 
     }
@@ -52,6 +53,7 @@ public class MainWindowController implements Initializable {
         navBtn2.setStyle("-fx-background-color: #a3b5d9");
         navBtn1.setStyle("-fx-background-color: #0c447b");
         navBtn3.setStyle("-fx-background-color: #0c447b");
+        navBtn4.setStyle("-fx-background-color: #0c447b");
         rrPane.toFront();
     }
 
@@ -59,7 +61,17 @@ public class MainWindowController implements Initializable {
         navBtn3.setStyle("-fx-background-color: #a3b5d9");
         navBtn2.setStyle("-fx-background-color: #0c447b");
         navBtn1.setStyle("-fx-background-color: #0c447b");
+        navBtn4.setStyle("-fx-background-color: #0c447b");
         sPane.toFront();
+
+    }
+
+    public void NavBtn4OnAction(ActionEvent event){
+        navBtn4.setStyle("-fx-background-color: #a3b5d9");
+        navBtn2.setStyle("-fx-background-color: #0c447b");
+        navBtn1.setStyle("-fx-background-color: #0c447b");
+        navBtn3.setStyle("-fx-background-color: #0c447b");
+        repPane.toFront();
 
     }
 
