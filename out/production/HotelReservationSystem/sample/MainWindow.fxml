@@ -42,241 +42,6 @@
             </Pane>
          </children>
       </Group>
-      <Pane fx:id="sPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
-         <children>
-            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
-               <children>
-                  <Pane layoutX="3.0" layoutY="115.0" prefHeight="561.0" prefWidth="796.0">
-                     <children>
-                        <TableView layoutX="23.0" layoutY="63.0" prefHeight="469.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
-                          <columns>
-                            <TableColumn prefWidth="110" text="Bill ID" />
-                            <TableColumn prefWidth="110.0" text="Customer name" />
-                             <TableColumn prefWidth="110.0" text="Type" />
-                             <TableColumn prefWidth="110.0" text="Customer name" />
-                             <TableColumn prefWidth="110.0" text="Contact number" />
-                          </columns>
-                        </TableView>
-                        <TextField layoutX="179.0" layoutY="14.0" prefHeight="38.0" prefWidth="350.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Button layoutX="538.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="View">
-                           <font>
-                              <Font name="Gadugi Bold" size="14.0" />
-                           </font>
-                        </Button>
-                     </children></Pane>
-                  <Pane layoutX="27.0" layoutY="16.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: #0c447b; -fx-background-radius: 30;">
-                     <children>
-                        <Button layoutX="644.0" layoutY="20.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="Search">
-                           <font>
-                              <Font name="Gadugi Bold" size="14.0" />
-                           </font>
-                        </Button>
-                        <TextField layoutX="24.0" layoutY="20.0" prefHeight="38.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-            <Label layoutX="365.0" layoutY="25.0" text="Search">
-               <font>
-                  <Font name="Gadugi Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane fx:id="rsPane" layoutX="200.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
-         <children>
-            <Label layoutX="282.0" layoutY="24.0" text="Room Reservation">
-               <font>
-                  <Font name="Gadugi Bold" size="30.0" />
-               </font>
-            </Label>
-            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
-               <children>
-                  <Pane layoutX="25.0" layoutY="25.0" prefHeight="172.0" prefWidth="748.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                     <children>
-                        <Label layoutX="43.0" layoutY="63.0" text="Non-AC">
-                           <font>
-                              <Font name="Gadugi Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="65.0" layoutY="126.0" text="AC">
-                           <font>
-                              <Font name="Gadugi Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="249.0" layoutY="14.0" text="Double Bed">
-                           <font>
-                              <Font name="Gadugi Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="570.0" layoutY="14.0" text="Single Bed">
-                           <font>
-                              <Font name="Gadugi Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="r7" layoutX="149.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" stylesheets="@myStyle.css" text="07" textFill="WHITE">
-                           <font>
-                              <Font name="Bauhaus 93" size="20.0" />
-                           </font>
-                           <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="btn" />
-                           </styleClass>
-                        </Button>
-                        <Button fx:id="r8" layoutX="231.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="08" textFill="WHITE">
-                           <font>
-                              <Font name="Bauhaus 93" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="r9" layoutX="311.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="09" textFill="WHITE">
-                           <font>
-                              <Font name="Bauhaus 93" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="r10" layoutX="389.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="10" textFill="WHITE">
-                           <font>
-                              <Font name="Bauhaus 93" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="r1" layoutX="188.0" layoutY="114.0" mnemonicParsing="false" onAction="#r1OnAction" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="01" textFill="WHITE">
-                           <font>
-                              <Font name="Bauhaus 93" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="r2" layoutX="270.0" layoutY="114.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="02" textFill="WHITE">
-                           <font>
-                              <Font name="Bauhaus 93" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="r3" layoutX="351.0" layoutY="114.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="03" textFill="WHITE">
-                           <font>
-                              <Font name="Bauhaus 93" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="r4" layoutX="501.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="04" textFill="WHITE">
-                           <font>
-                              <Font name="Bauhaus 93" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="r5" layoutX="581.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="05" textFill="WHITE">
-                           <font>
-                              <Font name="Bauhaus 93" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="r6" layoutX="661.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="06" textFill="WHITE">
-                           <font>
-                              <Font name="Bauhaus 93" size="20.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </Pane>
-                  <Label layoutX="50.0" layoutY="227.0" text="Name       :">
-                     <font>
-                         <Font name="Gadugi Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="144.0" layoutY="220.0" prefHeight="38.0" prefWidth="327.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="495.0" layoutY="228.0" text="ID no  :">
-                     <font>
-                        <Font name="Gadugi Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="560.0" layoutY="221.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="48.0" layoutY="286.0" text="Address     :">
-                     <font>
-                        <Font name="Gadugi Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="144.0" layoutY="280.0" prefHeight="38.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="326.0" layoutY="346.0" text="T.P.    :">
-                     <font>
-                        <Font name="Gadugi Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="387.0" layoutY="339.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="48.0" layoutY="395.0" text="Selected room  :">
-                     <font>
-                        <Font name="Gadugi Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="47.0" layoutY="346.0" text="Vehicle no :">
-                     <font>
-                        <Font name="Gadugi Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="144.0" layoutY="339.0" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="204.0" layoutY="395.0" text="NAC-Dbed-07">
-                     <font>
-                        <Font name="Gadugi Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="25.0" layoutY="543.0" prefHeight="112.0" prefWidth="748.0" style="-fx-background-color: #281717; -fx-background-radius: 30;">
-                     <children>
-                        <Pane layoutX="22.0" layoutY="18.0" prefHeight="77.0" prefWidth="704.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <children>
-                              <Button layoutX="410.0" layoutY="23.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="87.0" styleClass="clear_btn" stylesheets="@myStyle.css" text="CLEAR" textFill="WHITE">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="16.0" />
-                                 </font>
-                              </Button>
-                              <Button layoutX="544.0" layoutY="23.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" styleClass="checkout_btn" stylesheets="@myStyle.css" text="CheckIn" textFill="WHITE">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label layoutX="85.0" layoutY="24.0" text="*Rs. 1500.00 per day">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-                  <Label layoutX="48.0" layoutY="441.0" text="Check In  :">
-                     <font>
-                        <Font name="Gadugi Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <DatePicker layoutX="146.0" layoutY="435.0" prefHeight="38.0" prefWidth="174.0" />
-                  <TextField layoutX="146.0" layoutY="487.0" prefHeight="38.0" prefWidth="87.0" promptText="Time" style="-fx-background-color: white; -fx-background-radius: 30;">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </TextField>
-                  <ChoiceBox fx:id="ciTime" layoutX="245.0" layoutY="487.0" prefHeight="38.0" prefWidth="77.0" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="timebtn" stylesheets="@myStyle.css" />
-               </children>
-            </Pane>
-         </children>
-      </Pane>
       <Pane fx:id="rrPane" layoutX="200.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
          <children>
             <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
@@ -481,6 +246,241 @@
                   <Font name="Gadugi Bold" size="30.0" />
                </font>
             </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="sPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
+               <children>
+                  <Pane layoutX="3.0" layoutY="115.0" prefHeight="561.0" prefWidth="796.0">
+                     <children>
+                        <TableView layoutX="23.0" layoutY="63.0" prefHeight="469.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
+                          <columns>
+                            <TableColumn prefWidth="110" text="Bill ID" />
+                            <TableColumn prefWidth="110.0" text="Customer name" />
+                             <TableColumn prefWidth="110.0" text="Type" />
+                             <TableColumn prefWidth="110.0" text="Customer name" />
+                             <TableColumn prefWidth="110.0" text="Contact number" />
+                          </columns>
+                        </TableView>
+                        <TextField layoutX="179.0" layoutY="14.0" prefHeight="38.0" prefWidth="350.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Button layoutX="538.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="View">
+                           <font>
+                              <Font name="Gadugi Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children></Pane>
+                  <Pane layoutX="27.0" layoutY="16.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: #0c447b; -fx-background-radius: 30;">
+                     <children>
+                        <Button layoutX="644.0" layoutY="20.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="Search">
+                           <font>
+                              <Font name="Gadugi Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField layoutX="24.0" layoutY="20.0" prefHeight="38.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Label layoutX="365.0" layoutY="25.0" text="Search">
+               <font>
+                  <Font name="Gadugi Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="rsPane" layoutX="200.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="282.0" layoutY="24.0" text="Room Reservation">
+               <font>
+                  <Font name="Gadugi Bold" size="30.0" />
+               </font>
+            </Label>
+            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
+               <children>
+                  <Pane layoutX="25.0" layoutY="25.0" prefHeight="172.0" prefWidth="748.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                     <children>
+                        <Label layoutX="43.0" layoutY="63.0" text="Non-AC">
+                           <font>
+                              <Font name="Gadugi Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="65.0" layoutY="126.0" text="AC">
+                           <font>
+                              <Font name="Gadugi Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="249.0" layoutY="14.0" text="Double Bed">
+                           <font>
+                              <Font name="Gadugi Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="570.0" layoutY="14.0" text="Single Bed">
+                           <font>
+                              <Font name="Gadugi Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="r7" layoutX="149.0" layoutY="58.0" mnemonicParsing="false" onAction="#r7OnAction" prefHeight="34.0" prefWidth="67.0" stylesheets="@myStyle.css" text="07" textFill="WHITE">
+                           <font>
+                              <Font name="Bauhaus 93" size="20.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="r8" layoutX="231.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="08" textFill="WHITE">
+                           <font>
+                              <Font name="Bauhaus 93" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="r9" layoutX="311.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="09" textFill="WHITE">
+                           <font>
+                              <Font name="Bauhaus 93" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="r10" layoutX="389.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="10" textFill="WHITE">
+                           <font>
+                              <Font name="Bauhaus 93" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="r1" layoutX="188.0" layoutY="114.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="01" textFill="WHITE">
+                           <font>
+                              <Font name="Bauhaus 93" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="r2" layoutX="270.0" layoutY="114.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="02" textFill="WHITE">
+                           <font>
+                              <Font name="Bauhaus 93" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="r3" layoutX="351.0" layoutY="114.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="03" textFill="WHITE">
+                           <font>
+                              <Font name="Bauhaus 93" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="r4" layoutX="501.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="04" textFill="WHITE">
+                           <font>
+                              <Font name="Bauhaus 93" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="r5" layoutX="581.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="05" textFill="WHITE">
+                           <font>
+                              <Font name="Bauhaus 93" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="r6" layoutX="661.0" layoutY="58.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="06" textFill="WHITE">
+                           <font>
+                              <Font name="Bauhaus 93" size="20.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Label layoutX="50.0" layoutY="227.0" text="Name       :">
+                     <font>
+                         <Font name="Gadugi Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="144.0" layoutY="220.0" prefHeight="38.0" prefWidth="327.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="495.0" layoutY="228.0" text="ID no  :">
+                     <font>
+                        <Font name="Gadugi Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="560.0" layoutY="221.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="48.0" layoutY="286.0" text="Address     :">
+                     <font>
+                        <Font name="Gadugi Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="144.0" layoutY="280.0" prefHeight="38.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="326.0" layoutY="346.0" text="T.P.    :">
+                     <font>
+                        <Font name="Gadugi Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="387.0" layoutY="339.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="48.0" layoutY="395.0" text="Selected room  :">
+                     <font>
+                        <Font name="Gadugi Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="47.0" layoutY="346.0" text="Vehicle no :">
+                     <font>
+                        <Font name="Gadugi Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="144.0" layoutY="339.0" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="204.0" layoutY="395.0" text="NAC-Dbed-07">
+                     <font>
+                        <Font name="Gadugi Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="25.0" layoutY="543.0" prefHeight="112.0" prefWidth="748.0" style="-fx-background-color: #281717; -fx-background-radius: 30;">
+                     <children>
+                        <Pane layoutX="22.0" layoutY="18.0" prefHeight="77.0" prefWidth="704.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <children>
+                              <Button layoutX="410.0" layoutY="23.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="87.0" styleClass="clear_btn" stylesheets="@myStyle.css" text="CLEAR" textFill="WHITE">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="544.0" layoutY="23.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" styleClass="checkout_btn" stylesheets="@myStyle.css" text="CheckIn" textFill="WHITE">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="16.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="85.0" layoutY="24.0" text="*Rs. 1500.00 per day">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Label layoutX="48.0" layoutY="441.0" text="Check In  :">
+                     <font>
+                        <Font name="Gadugi Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker layoutX="146.0" layoutY="435.0" prefHeight="38.0" prefWidth="174.0" />
+                  <TextField layoutX="146.0" layoutY="487.0" prefHeight="38.0" prefWidth="87.0" promptText="Time" style="-fx-background-color: white; -fx-background-radius: 30;">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <ChoiceBox fx:id="ciTime" layoutX="245.0" layoutY="487.0" prefHeight="38.0" prefWidth="77.0" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="timebtn" stylesheets="@myStyle.css" />
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
