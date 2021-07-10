@@ -26,7 +26,7 @@ public class CheckinProcess {
     }
 
     private String validateInputs(){
-        if (name.equals("") || id.equals("") || add.equals("") || vehino.equals("") || tp.equals("")) {
+        if (name.equals("") || id.equals("") || add.equals("") || tp.equals("")) {
             return "one or more fields are empty";
         } else {
             if(room != 0){
