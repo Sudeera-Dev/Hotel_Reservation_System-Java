@@ -453,7 +453,7 @@
                                     <Font name="Gadugi Bold" size="16.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="544.0" layoutY="23.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" styleClass="checkout_btn" stylesheets="@myStyle.css" text="CheckIn" textFill="WHITE">
+                              <Button fx:id="ciCheckin" layoutX="544.0" layoutY="23.0" mnemonicParsing="false" onAction="#ciCheckinOnAction" prefHeight="37.0" prefWidth="99.0" styleClass="checkout_btn" stylesheets="@myStyle.css" text="CheckIn" textFill="WHITE">
                                  <font>
                                     <Font name="Gadugi Bold" size="16.0" />
                                  </font>
@@ -479,6 +479,11 @@
                      </font>
                   </TextField>
                   <Button fx:id="ciCheck" layoutX="459.0" layoutY="214.0" mnemonicParsing="false" onAction="#ciCheckOnAction" prefHeight="38.0" prefWidth="71.0" styleClass="nav_btn" stylesheets="@myStyle.css" text="Check" textFill="WHITE" />
+                  <Label fx:id="ciResult" layoutX="361.0" layoutY="504.0" text="Label" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="Gadugi Bold" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

@@ -30,14 +30,19 @@ public class MainWindowController implements Initializable {
     ObservableList<String> pkgsList = FXCollections.observableArrayList("Package 1","Package 2","Package 3");
     ObservableList<String> timeSlotList = FXCollections.observableArrayList("Day","Night");
 
-    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck;
+    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck,ciCheckin;
     @FXML Pane rsPane,rrPane,sPane,repPane;
     @FXML ChoiceBox pkgs,timeSlot;
     @FXML DatePicker ciDate;
     @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp;
-    @FXML Label ciSelroom,ciDprice;
+    @FXML Label ciSelroom,ciDprice,ciResult;
 
     private int ro1=0,ro2=0,ro3=0,ro4=0,ro5=0,ro6=0,ro7=0,ro8=0,ro9=0,ro10=0;
+
+    DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+
+    String neTime,nDate;
 
     private Connection getConnection() {
         Connection myConn = mdc.getMyConnection();
@@ -54,14 +59,14 @@ public class MainWindowController implements Initializable {
     }
 
     private void reservedRoom() {
-        DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
         LocalDateTime now = LocalDateTime.now();
 
         String myStatement;
 
         myStatement="select * from bill,bill_reservation,reservation where BillID = Bill_id and Reservation_id = ReservationID and (Check_in_date <= \""+date.format(now)+"\" and (Check_out_date >= \""+date.format(now)+"\" or Check_out_date is NULL)) and (Check_in_time <=\""+time.format(now)+"\" and (Check_out_time >= \""+time.format(now)+"\" or Check_out_time is NULL))";
 
+        neTime=time.format(now);
+        nDate=date.format(now);
 
         ciDate.setValue(LocalDate.now());
         ciTime.setText(time.format(now).toString());
@@ -157,19 +162,57 @@ public class MainWindowController implements Initializable {
 
     }
 
-    public void ciCheckOnAction(ActionEvent event){
-        DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+    public void ciCheckinOnAction(ActionEvent event){
 
+        int room = getSelectedRoom();
+
+        String name=ciName.getText();
+        String id=ciId.getText();
+        String add=ciAdd.getText();
+        String vehino=ciVehino.getText();
+        String tp=ciTp.getText();
+
+        CheckinProcess cp = new CheckinProcess(name,id,add,vehino,tp,neTime,nDate,room);
+        ciResult.setText(cp.mainProcess());
+
+    }
+
+    private int getSelectedRoom(){
+        if (ro1 == 1){
+            return 1;
+        }else if(ro2 == 1){
+            return 2;
+        }else if(ro3 == 1){
+            return 3;
+        }else if(ro4 == 1){
+            return 4;
+        }else if(ro5 == 1){
+            return 5;
+        }else if(ro6 == 1){
+            return 6;
+        }else if(ro7 == 1){
+            return 7;
+        }else if(ro8 == 1){
+            return 8;
+        }else if(ro9 == 1){
+            return 9;
+        }else if(ro10 == 1){
+            return 10;
+        }else{
+            return 0;
+        }
+    }
+
+    public void ciCheckOnAction(ActionEvent event){
         String nTime = ciTime.getText();
 
         if(nTime.length() == 5){
-            LocalTime neTime = LocalTime.parse( nTime ) ;
-            LocalDate nDate = ciDate.getValue();
+            neTime = nTime;
+            nDate = date.format(ciDate.getValue());
 
             String myStatement;
 
-            myStatement="select * from bill,bill_reservation,reservation where BillID = Bill_id and Reservation_id = ReservationID and (Check_in_date <= \""+date.format(nDate)+"\" and (Check_out_date >= \""+date.format(nDate)+"\" or Check_out_date is NULL)) and (Check_in_time <=\""+time.format(neTime)+"\" and (Check_out_time >= \""+time.format(neTime)+"\" or Check_out_time is NULL))";
+            myStatement="select * from bill,bill_reservation,reservation where BillID = Bill_id and Reservation_id = ReservationID and (Check_in_date <= \""+nDate+"\" and (Check_out_date >= \""+nDate+"\" or Check_out_date is NULL)) and (Check_in_time <=\""+neTime+"\" and (Check_out_time >= \""+neTime+"\" or Check_out_time is NULL))";
 
 
             try {
