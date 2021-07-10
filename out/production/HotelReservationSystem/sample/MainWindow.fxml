@@ -352,7 +352,7 @@
                               <Font name="Bauhaus 93" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="r1" layoutX="188.0" layoutY="114.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="01" textFill="WHITE">
+                        <Button fx:id="r1" layoutX="188.0" layoutY="114.0" mnemonicParsing="false" onAction="#r1OnAction" prefHeight="34.0" prefWidth="67.0" styleClass="btn" stylesheets="@myStyle.css" text="01" textFill="WHITE">
                            <font>
                               <Font name="Bauhaus 93" size="20.0" />
                            </font>
@@ -389,7 +389,7 @@
                          <Font name="Gadugi Bold" size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="143.0" layoutY="278.0" prefHeight="38.0" prefWidth="327.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                  <TextField fx:id="ciName" layoutX="143.0" layoutY="278.0" prefHeight="38.0" prefWidth="327.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -399,7 +399,7 @@
                         <Font name="Gadugi Bold" size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="559.0" layoutY="279.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                  <TextField fx:id="ciId" layoutX="559.0" layoutY="279.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -409,7 +409,7 @@
                         <Font name="Gadugi Bold" size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="143.0" layoutY="338.0" prefHeight="38.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                  <TextField fx:id="ciAdd" layoutX="143.0" layoutY="338.0" prefHeight="38.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -419,7 +419,7 @@
                         <Font name="Gadugi Bold" size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="386.0" layoutY="397.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                  <TextField fx:id="ciTp" layoutX="386.0" layoutY="397.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -434,12 +434,12 @@
                         <Font name="Gadugi Bold" size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="143.0" layoutY="397.0" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                  <TextField fx:id="ciVehino" layoutX="143.0" layoutY="397.0" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="203.0" layoutY="453.0" text="NAC-Dbed-07">
+                  <Label fx:id="ciSelroom" layoutX="203.0" layoutY="453.0" text="NAC-Dbed-07">
                      <font>
                         <Font name="Gadugi Bold" size="16.0" />
                      </font>
@@ -448,7 +448,7 @@
                      <children>
                         <Pane layoutX="22.0" layoutY="18.0" prefHeight="77.0" prefWidth="704.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                            <children>
-                              <Button layoutX="410.0" layoutY="23.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="87.0" styleClass="clear_btn" stylesheets="@myStyle.css" text="CLEAR" textFill="WHITE">
+                              <Button fx:id="ciClear" layoutX="410.0" layoutY="23.0" mnemonicParsing="false" onAction="#ciClearOnAction" prefHeight="37.0" prefWidth="87.0" styleClass="clear_btn" stylesheets="@myStyle.css" text="CLEAR" textFill="WHITE">
                                  <font>
                                     <Font name="Gadugi Bold" size="16.0" />
                                  </font>
@@ -458,7 +458,7 @@
                                     <Font name="Gadugi Bold" size="16.0" />
                                  </font>
                               </Button>
-                              <Label layoutX="85.0" layoutY="24.0" text="*Rs. 1500.00 per day">
+                              <Label fx:id="ciDprice" layoutX="85.0" layoutY="24.0" text="*Rs. 1500.00 per day">
                                  <font>
                                     <Font name="Gadugi Bold" size="24.0" />
                                  </font>
