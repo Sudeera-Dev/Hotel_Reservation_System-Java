@@ -14,10 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -33,7 +30,7 @@ public class MainWindowController implements Initializable {
     ObservableList<String> pkgsList = FXCollections.observableArrayList("Package 1","Package 2","Package 3");
     ObservableList<String> timeSlotList = FXCollections.observableArrayList("Day","Night");
 
-    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10;
+    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck;
     @FXML Pane rsPane,rrPane,sPane,repPane;
     @FXML ChoiceBox pkgs,timeSlot;
     @FXML DatePicker ciDate;
@@ -157,6 +154,67 @@ public class MainWindowController implements Initializable {
         navBtn1.setStyle("-fx-background-color: #0c447b");
         navBtn3.setStyle("-fx-background-color: #0c447b");
         repPane.toFront();
+
+    }
+
+    public void ciCheckOnAction(ActionEvent event){
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+
+        String nTime = ciTime.getText();
+
+        if(nTime.length() == 5){
+            LocalTime neTime = LocalTime.parse( nTime ) ;
+            LocalDate nDate = ciDate.getValue();
+
+            String myStatement;
+
+            myStatement="select * from bill,bill_reservation,reservation where BillID = Bill_id and Reservation_id = ReservationID and (Check_in_date <= \""+date.format(nDate)+"\" and (Check_out_date >= \""+date.format(nDate)+"\" or Check_out_date is NULL)) and (Check_in_time <=\""+time.format(neTime)+"\" and (Check_out_time >= \""+time.format(neTime)+"\" or Check_out_time is NULL))";
+
+
+            try {
+                stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(myStatement);
+
+                while(rs.next()){
+                    if(rs.getInt("RoomNo") == 1){
+                        ro1=3;
+                        r1.setStyle("-fx-background-color: red");
+                    }else if(rs.getInt("RoomNo") == 2){
+                        ro2=3;
+                        r2.setStyle("-fx-background-color: red");
+                    }else if(rs.getInt("RoomNo") == 3){
+                        ro3=3;
+                        r3.setStyle("-fx-background-color: red");
+                    }else if(rs.getInt("RoomNo") == 4){
+                        ro4=3;
+                        r4.setStyle("-fx-background-color: red");
+                    }else if(rs.getInt("RoomNo") == 5){
+                        ro5=3;
+                        r5.setStyle("-fx-background-color: red");
+                    }else if(rs.getInt("RoomNo") == 6){
+                        ro6=3;
+                        r6.setStyle("-fx-background-color: red");
+                    }else if(rs.getInt("RoomNo") == 7){
+                        ro7=3;
+                        r7.setStyle("-fx-background-color: red");
+                    }else if(rs.getInt("RoomNo") == 8){
+                        ro8=3;
+                        r8.setStyle("-fx-background-color: red");
+                    }else if(rs.getInt("RoomNo") == 9){
+                        ro9=3;
+                        r9.setStyle("-fx-background-color: red");
+                    }else if(rs.getInt("RoomNo") == 10){
+                        ro10=3;
+                        r10.setStyle("-fx-background-color: red");
+                    }
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            System.out.println(myStatement);
+        }
 
     }
 

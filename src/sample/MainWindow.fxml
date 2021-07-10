@@ -478,7 +478,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </TextField>
-                  <Button layoutX="470.0" layoutY="221.0" mnemonicParsing="false" stylesheets="@myStyle.css" text="Check" />
+                  <Button fx:id="ciCheck" layoutX="459.0" layoutY="214.0" mnemonicParsing="false" onAction="#ciCheckOnAction" prefHeight="38.0" prefWidth="71.0" styleClass="nav_btn" stylesheets="@myStyle.css" text="Check" textFill="WHITE" />
                </children>
             </Pane>
          </children>
