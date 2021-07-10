@@ -1,5 +1,7 @@
 package sample;
 
+import java.sql.Connection;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.regex.Matcher;
@@ -7,10 +9,14 @@ import java.util.regex.Pattern;
 
 public class CheckinProcess {
 
-    private String name,id,add,vehino,tp,neTime,nDate;
+    DBconnect mdc = new DBconnect();
+    Connection con = getConnection();
+    Statement stmt;
+
+    private String name,id,add,vehino,tp,neTime,nDate,cudate;
     private int room;
 
-    CheckinProcess(String name,String id,String add,String vehino,String tp,String neTime,String nDate,int room){
+    CheckinProcess(String name,String id,String add,String vehino,String tp,String neTime,String nDate,int room,String cuDate){
         this.name=name;
         this.id=id;
         this.add= add;
@@ -19,6 +25,12 @@ public class CheckinProcess {
         this.nDate=nDate;
         this.neTime=neTime;
         this.room=room;
+        this.cudate=cuDate;
+    }
+
+    private Connection getConnection() {
+        Connection myConn = mdc.getMyConnection();
+        return myConn;
     }
 
     public String mainProcess(){
@@ -35,7 +47,7 @@ public class CheckinProcess {
                 Matcher matcher = pattern.matcher(tp);
                 if(matcher.matches()){
                     if(id.length() > 9){
-                        return "success";
+                        CheckIn();
                     }else{
                         return "invalid id";
                     }
@@ -46,5 +58,11 @@ public class CheckinProcess {
                 return "Select a room";
             }
         }
+        return null;
+    }
+
+    private String CheckIn(){
+        
+        return "success";
     }
 }

@@ -44,7 +44,7 @@ public class MainWindowController implements Initializable {
     DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
 
-    String neTime,nDate;
+    String neTime,nDate,cuDate;
 
     private Connection getConnection() {
         Connection myConn = mdc.getMyConnection();
@@ -69,7 +69,7 @@ public class MainWindowController implements Initializable {
 
         neTime=time.format(now);
         nDate=date.format(now);
-
+        cuDate=date.format(now);
         ciDate.setValue(LocalDate.now());
         ciTime.setText(time.format(now).toString());
 
@@ -219,7 +219,7 @@ public class MainWindowController implements Initializable {
         String vehino=ciVehino.getText();
         String tp=ciTp.getText();
 
-        CheckinProcess cp = new CheckinProcess(name,id,add,vehino,tp,neTime,nDate,room);
+        CheckinProcess cp = new CheckinProcess(name,id,add,vehino,tp,neTime,nDate,room,cuDate);
         ciResult.setText(cp.mainProcess());
 
     }
