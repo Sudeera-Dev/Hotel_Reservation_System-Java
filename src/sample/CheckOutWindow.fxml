@@ -11,21 +11,6 @@
          <children>
             <Pane layoutX="11.0" layoutY="347.0" prefHeight="133.0" prefWidth="720.0" style="-fx-background-color: #281717; -fx-background-radius: 30;">
                <children>
-                  <Label layoutX="40.0" layoutY="28.0" text="Sub Total    :" textFill="WHITE">
-                     <font>
-                        <Font name="Gadugi Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="40.0" layoutY="74.0" text="Discount     :" textFill="WHITE">
-                     <font>
-                        <Font name="Gadugi Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="192.0" layoutY="28.0" text="Rs. 3000.00" textFill="WHITE">
-                     <font>
-                        <Font name="Gadugi Bold" size="24.0" />
-                     </font>
-                  </Label>
                   <Pane layoutX="374.0" layoutY="21.0" prefHeight="94.0" prefWidth="327.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                      <children>
                         <Label layoutX="23.0" layoutY="2.0" text="Total    :">
@@ -45,79 +30,60 @@
                         </Button>
                      </children>
                   </Pane>
-                  <Label layoutX="192.0" layoutY="74.0" text="Rs." textFill="WHITE">
+                  <Button layoutX="69.0" layoutY="50.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="224.0" styleClass="clear_btn" stylesheets="@myStyle.css" text="Cancel the Reservation" textFill="WHITE">
                      <font>
-                        <Font name="Gadugi Bold" size="24.0" />
+                        <Font name="Gadugi Bold" size="16.0" />
                      </font>
-                  </Label>
-                  <TextField layoutX="231.0" layoutY="73.0" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="500">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </TextField>
+                  </Button>
                </children>
             </Pane>
-            <Label layoutX="64.0" layoutY="235.0" text="Check Out  :">
+            <Label layoutX="64.0" layoutY="243.0" text="Check Out  :">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <DatePicker layoutX="176.0" layoutY="231.0" prefHeight="38.0" prefWidth="174.0" />
-            <TextField layoutX="373.0" layoutY="231.0" prefHeight="38.0" prefWidth="87.0" promptText="Time" style="-fx-background-color: white; -fx-background-radius: 30;">
+            <DatePicker fx:id="cooDate" layoutX="176.0" layoutY="239.0" prefHeight="38.0" prefWidth="174.0" />
+            <TextField fx:id="cooTime" layoutX="373.0" layoutY="240.0" prefHeight="38.0" prefWidth="87.0" promptText="Time" style="-fx-background-color: white; -fx-background-radius: 30;">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </TextField>
-            <Label layoutX="431.0" layoutY="153.0" text="Selected room  :">
+            <Label layoutX="34.0" layoutY="162.0" text="Selected room  :">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="568.0" layoutY="152.0" text="NAC-Dbed-07" textFill="#160086">
+            <Label fx:id="coSelroom" layoutX="175.0" layoutY="161.0" text="NAC-Dbed-07" textFill="#160086">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="105.0" layoutY="118.0" text="T.P.    :">
+            <Label layoutX="104.0" layoutY="85.0" text="T.P.    :">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="175.0" layoutY="118.0" text="0771234567" textFill="#160086">
+            <Label fx:id="coTp" layoutX="175.0" layoutY="86.0" text="0771234567" textFill="#160086">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="78.0" layoutY="194.0" text="Check In  :">
+            <Label layoutX="471.0" layoutY="79.0" text="Check In  :">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="180.0" layoutY="193.0" text="06-06-21" textFill="#160086">
+            <Label fx:id="coTime" layoutX="566.0" layoutY="79.0" text="06-06-21" textFill="#160086">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Button layoutX="479.0" layoutY="297.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="224.0" styleClass="clear_btn" stylesheets="@myStyle.css" text="Cancel the Reservation" textFill="WHITE">
-               <font>
-                  <Font name="Gadugi Bold" size="16.0" />
-               </font>
-            </Button>
-            <Button layoutX="180.0" layoutY="297.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" stylesheets="@myStyle.css" text="Calculate" textFill="WHITE">
-               <font>
-                  <Font name="Gadugi Bold" size="16.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="clear_btn" />
-                  <String fx:value="checkout_btn" />
-               </styleClass>
-            </Button>
             <Label layoutX="76.0" layoutY="46.0" text="Name       :">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="181.0" layoutY="45.0" text="Mr. silva" textFill="#160086">
+            <Label fx:id="coName" layoutX="176.0" layoutY="45.0" text="Mr. silva" textFill="#160086">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
@@ -127,31 +93,40 @@
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="561.0" layoutY="43.0" text="1234567891v" textFill="#160086">
+            <Label fx:id="coId" layoutX="561.0" layoutY="43.0" text="1234567891v" textFill="#160086">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="68.0" layoutY="83.0" text="Address     :">
+            <Label layoutX="67.0" layoutY="201.0" text="Address     :">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="178.0" layoutY="83.0" text="no 32, piliyandala, colombo" textFill="#160086">
+            <Label fx:id="coAdd" layoutX="175.0" layoutY="201.0" text="no 32, piliyandala, colombo" textFill="#160086">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="68.0" layoutY="155.0" text="Vehicle no :">
+            <Label layoutX="67.0" layoutY="124.0" text="Vehicle no :">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="182.0" layoutY="155.0" text="WIN-5678" textFill="#160086">
+            <Label fx:id="coVehino" layoutX="176.0" layoutY="125.0" text="WIN-5678" textFill="#160086">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
+            <Button layoutX="499.0" layoutY="241.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" stylesheets="@myStyle.css" text="Calculate" textFill="WHITE">
+               <font>
+                  <Font name="Gadugi Bold" size="16.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="clear_btn" />
+                  <String fx:value="checkout_btn" />
+               </styleClass>
+            </Button>
          </children>
       </Pane>
       <Label fx:id="rmNo" layoutX="345.0" layoutY="23.0" text="Room 07">

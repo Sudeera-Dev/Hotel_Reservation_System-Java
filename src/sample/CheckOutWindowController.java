@@ -24,7 +24,15 @@ public class CheckOutWindowController implements Initializable{
     Connection con = getConnection();
     Statement stmt;
 
-    @FXML Label rmNo;
+    @FXML Label rmNo,coName,coAdd,coTime,coId,coVehino,coSelroom,coTp;
+    @FXML TextField cooTime;
+    @FXML DatePicker cooDate;
+
+    DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+    LocalDateTime now = LocalDateTime.now();
+
+    String conTime,conDate;
 
     private Connection getConnection() {
         Connection myConn = mdc.getMyConnection();
@@ -35,13 +43,18 @@ public class CheckOutWindowController implements Initializable{
         loadDetails();
     }
 
+
     private void loadDetails(){
+        conTime=time.format(now);
+        conDate=date.format(now);
+        cooDate.setValue(LocalDate.now());
+        cooTime.setText(time.format(now).toString());
         LocalDateTime now = LocalDateTime.now();
 
         String myStatement;
 
 
-        myStatement="select * from bill,bill_reservation,reservation where BillID = Bill_id and Reservation_id = ReservationID and BillId = '"+MainWindowController.billID+ "' and ReservationID = '"+MainWindowController.reservationID+"'";
+        myStatement="select * from bill,bill_reservation,reservation,customer where reservation.CustomerID=customer.CustomerID and BillID = Bill_id and Reservation_id = ReservationID and BillId = '"+MainWindowController.billID+ "' and ReservationID = '"+MainWindowController.reservationID+"'";
 
 
         try {
@@ -49,6 +62,33 @@ public class CheckOutWindowController implements Initializable{
             ResultSet rs = stmt.executeQuery(myStatement);
 
             while(rs.next()){
+                rmNo.setText("Room "+rs.getString("RoomNo"));
+                coName.setText(rs.getString("Name"));
+                coAdd.setText(rs.getString("Address"));
+                coId.setText(rs.getString("NIC"));
+                coVehino.setText(rs.getString("VehicleNum"));
+                coTp.setText(rs.getString("TP"));
+                if(rs.getInt("RoomNo") == 1){
+                    coSelroom.setText("Room 1 - AC - Double Bed");
+                }else if(rs.getInt("RoomNo") == 2){
+                    coSelroom.setText("Room 2 - AC - Double Bed");
+                }else if(rs.getInt("RoomNo") == 3){
+                    coSelroom.setText("Room 3 - AC - Double Bed");
+                }else if(rs.getInt("RoomNo") == 4){
+                    coSelroom.setText("Room 4 - AC - Single Bed");
+                }else if(rs.getInt("RoomNo") == 5){
+                    coSelroom.setText("Room 5 - AC - Single Bed");
+                }else if(rs.getInt("RoomNo") == 6){
+                    coSelroom.setText("Room 6 - AC - Single Bed");
+                }else if(rs.getInt("RoomNo") == 7){
+                    coSelroom.setText("Room 7 - non/AC - Double Bed");
+                }else if(rs.getInt("RoomNo") == 8){
+                    coSelroom.setText("Room 8 - non/AC - Double Bed");
+                }else if(rs.getInt("RoomNo") == 9){
+                    coSelroom.setText("Room 9 - non/AC - Double Bed");
+                }else if(rs.getInt("RoomNo") == 10){
+                    coSelroom.setText("Room 10 - non/AC - Double Bed");
+                }
 
             }
         } catch (SQLException throwables) {

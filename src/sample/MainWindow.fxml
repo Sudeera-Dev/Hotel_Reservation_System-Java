@@ -42,171 +42,6 @@
             </Pane>
          </children>
       </Group>
-      <Pane fx:id="rrPane" layoutX="200.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
-         <children>
-            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
-               <children>
-                  <Pane layoutX="24.0" layoutY="26.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                     <children>
-                        <DatePicker layoutX="139.0" layoutY="22.0" prefHeight="38.0" prefWidth="174.0" />
-                        <Label layoutX="50.0" layoutY="26.0" text="Date       :">
-                           <font>
-                              <Font name="Gadugi Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="434.0" layoutY="20.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="71.0" style="-fx-background-radius: 30px;" styleClass="nav_btn" stylesheets="@myStyle.css" text="Check" textFill="WHITE">
-                           <font>
-                              <Font name="Gadugi Bold" size="14.0" />
-                           </font>
-                        </Button>
-                        <ChoiceBox fx:id="timeSlot" layoutX="331.0" layoutY="20.0" prefHeight="38.0" prefWidth="87.0" style="-fx-background-radius: 30px;" styleClass="nav_btn" stylesheets="@myStyle.css" />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="3.0" layoutY="115.0" prefHeight="561.0" prefWidth="796.0">
-                     <children>
-                        <Label layoutX="41.0" layoutY="19.0" text="Name       :">
-                           <font>
-                              <Font name="Gadugi Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField layoutX="139.0" layoutY="13.0" prefHeight="38.0" prefWidth="327.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="498.0" layoutY="20.0" text="ID no  :">
-                           <font>
-                              <Font name="Gadugi Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField layoutX="560.0" layoutY="13.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="37.0" layoutY="80.0" text="Address     :">
-                           <font>
-                              <Font name="Gadugi Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField layoutX="139.0" layoutY="73.0" prefHeight="38.0" prefWidth="613.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="52.0" layoutY="140.0" text="T.P.         :">
-                           <font>
-                              <Font name="Gadugi Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField layoutX="139.0" layoutY="133.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Pane layoutX="24.0" layoutY="361.0" prefHeight="172.0" prefWidth="748.0" style="-fx-background-color: #281717; -fx-background-radius: 30;">
-                           <children>
-                              <Label layoutX="40.0" layoutY="22.0" text="Sub Total    :" textFill="WHITE">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="40.0" layoutY="68.0" text="Discount     :" textFill="WHITE">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="192.0" layoutY="22.0" text="Rs. 12,000.00" textFill="WHITE">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Pane layoutX="371.0" layoutY="15.0" prefHeight="143.0" prefWidth="362.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                                 <children>
-                                    <Label layoutX="29.0" layoutY="30.0" text="Payment  :">
-                                       <font>
-                                          <Font name="Gadugi Bold" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Button layoutX="139.0" layoutY="81.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="87.0" styleClass="clear_btn" stylesheets="@myStyle.css" text="CLEAR" textFill="WHITE">
-                                       <font>
-                                          <Font name="Gadugi Bold" size="16.0" />
-                                       </font>
-                                    </Button>
-                                    <Button layoutX="236.0" layoutY="81.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" styleClass="checkout_btn" stylesheets="@myStyle.css" text="Checkout" textFill="WHITE">
-                                       <font>
-                                          <Font name="Gadugi Bold" size="16.0" />
-                                       </font>
-                                    </Button>
-                                    <TextField layoutX="155.0" layoutY="28.0" prefHeight="38.0" prefWidth="180.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
-                                       <font>
-                                          <Font name="System Bold" size="14.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </Pane>
-                              <Label layoutX="192.0" layoutY="68.0" text="10%" textFill="WHITE">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="61.0" layoutY="112.0" text="Total        :" textFill="WHITE">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="192.0" layoutY="112.0" text="Rs. 9600.00" textFill="WHITE">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane layoutX="24.0" layoutY="197.0" prefHeight="143.0" prefWidth="748.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid;">
-                           <children>
-                              <ChoiceBox fx:id="pkgs" layoutX="297.0" layoutY="20.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="timebtn" stylesheets="@myStyle.css" />
-                              <Label layoutX="177.0" layoutY="29.0" prefHeight="25.0" prefWidth="113.0" text="Package         :">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="421.0" layoutY="29.0" text="Rs. 690.00">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="509.0" layoutY="29.0" text="per Plate">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="138.0" layoutY="81.0" text="Number of Plates  :">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="16.0" />
-                                 </font>
-                              </Label>
-                              <TextField layoutX="297.0" layoutY="75.0" prefHeight="38.0" prefWidth="285.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </TextField>
-                              <Label layoutX="548.0" layoutY="122.0" text="* +10% service charges applys">
-                                 <font>
-                                    <Font name="Gadugi Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-               </children></Pane>
-            <Label layoutX="286.0" layoutY="24.0" text="Event Reservation">
-               <font>
-                  <Font name="Gadugi Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
       <Pane fx:id="repPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
          <children>
             <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
@@ -486,6 +321,171 @@
                   </Label>
                </children>
             </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="rrPane" layoutX="200.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
+               <children>
+                  <Pane layoutX="24.0" layoutY="26.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                     <children>
+                        <DatePicker layoutX="139.0" layoutY="22.0" prefHeight="38.0" prefWidth="174.0" />
+                        <Label layoutX="50.0" layoutY="26.0" text="Date       :">
+                           <font>
+                              <Font name="Gadugi Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="434.0" layoutY="20.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="71.0" style="-fx-background-radius: 30px;" styleClass="nav_btn" stylesheets="@myStyle.css" text="Check" textFill="WHITE">
+                           <font>
+                              <Font name="Gadugi Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <ChoiceBox fx:id="timeSlot" layoutX="331.0" layoutY="20.0" prefHeight="38.0" prefWidth="87.0" style="-fx-background-radius: 30px;" styleClass="nav_btn" stylesheets="@myStyle.css" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="3.0" layoutY="115.0" prefHeight="561.0" prefWidth="796.0">
+                     <children>
+                        <Label layoutX="41.0" layoutY="19.0" text="Name       :">
+                           <font>
+                              <Font name="Gadugi Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="139.0" layoutY="13.0" prefHeight="38.0" prefWidth="327.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="498.0" layoutY="20.0" text="ID no  :">
+                           <font>
+                              <Font name="Gadugi Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="560.0" layoutY="13.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="37.0" layoutY="80.0" text="Address     :">
+                           <font>
+                              <Font name="Gadugi Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="139.0" layoutY="73.0" prefHeight="38.0" prefWidth="613.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="52.0" layoutY="140.0" text="T.P.         :">
+                           <font>
+                              <Font name="Gadugi Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="139.0" layoutY="133.0" prefHeight="38.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Pane layoutX="24.0" layoutY="361.0" prefHeight="172.0" prefWidth="748.0" style="-fx-background-color: #281717; -fx-background-radius: 30;">
+                           <children>
+                              <Label layoutX="40.0" layoutY="22.0" text="Sub Total    :" textFill="WHITE">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="40.0" layoutY="68.0" text="Discount     :" textFill="WHITE">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="192.0" layoutY="22.0" text="Rs. 12,000.00" textFill="WHITE">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Pane layoutX="371.0" layoutY="15.0" prefHeight="143.0" prefWidth="362.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                                 <children>
+                                    <Label layoutX="29.0" layoutY="30.0" text="Payment  :">
+                                       <font>
+                                          <Font name="Gadugi Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="139.0" layoutY="81.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="87.0" styleClass="clear_btn" stylesheets="@myStyle.css" text="CLEAR" textFill="WHITE">
+                                       <font>
+                                          <Font name="Gadugi Bold" size="16.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="236.0" layoutY="81.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" styleClass="checkout_btn" stylesheets="@myStyle.css" text="Checkout" textFill="WHITE">
+                                       <font>
+                                          <Font name="Gadugi Bold" size="16.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField layoutX="155.0" layoutY="28.0" prefHeight="38.0" prefWidth="180.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </Pane>
+                              <Label layoutX="192.0" layoutY="68.0" text="10%" textFill="WHITE">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="61.0" layoutY="112.0" text="Total        :" textFill="WHITE">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="192.0" layoutY="112.0" text="Rs. 9600.00" textFill="WHITE">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="24.0" layoutY="197.0" prefHeight="143.0" prefWidth="748.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid;">
+                           <children>
+                              <ChoiceBox fx:id="pkgs" layoutX="297.0" layoutY="20.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="timebtn" stylesheets="@myStyle.css" />
+                              <Label layoutX="177.0" layoutY="29.0" prefHeight="25.0" prefWidth="113.0" text="Package         :">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="421.0" layoutY="29.0" text="Rs. 690.00">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="509.0" layoutY="29.0" text="per Plate">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="138.0" layoutY="81.0" text="Number of Plates  :">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="297.0" layoutY="75.0" prefHeight="38.0" prefWidth="285.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="548.0" layoutY="122.0" text="* +10% service charges applys">
+                                 <font>
+                                    <Font name="Gadugi Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children></Pane>
+            <Label layoutX="286.0" layoutY="24.0" text="Event Reservation">
+               <font>
+                  <Font name="Gadugi Bold" size="30.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
