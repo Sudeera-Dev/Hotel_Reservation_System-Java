@@ -25,10 +25,10 @@ public class CheckOutWindowController implements Initializable{
     Connection con = getConnection();
     Statement stmt;
 
-    @FXML Label rmNo,coName,coAdd,coTime,coId,coVehino,coSelroom,coTp,ciTotal;
+    @FXML Label rmNo,coName,coAdd,coTime,coId,coVehino,coSelroom,coTp,ciTotal,coRes;
     @FXML TextField cooTime;
     @FXML DatePicker cooDate;
-    @FXML Button coCal,ciCancel;
+    @FXML Button coCal,ciCancel,coPay;
 
     DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
@@ -43,6 +43,11 @@ public class CheckOutWindowController implements Initializable{
 
     public void initialize(URL location, ResourceBundle resources) {
         loadDetails();
+        conTime = cooTime.getText();
+        conDate = date.format(cooDate.getValue());
+        CheckOutProcess co = new CheckOutProcess(conDate,conTime);
+        ciTotal.setText(co.mainProcess());
+
     }
 
 
@@ -56,7 +61,7 @@ public class CheckOutWindowController implements Initializable{
         String myStatement;
 
 
-        myStatement="select * from bill,bill_reservation,reservation,customer where reservation.CustomerID=customer.CustomerID and BillID = Bill_id and Reservation_id = ReservationID and BillId = '"+MainWindowController.billID+ "' and ReservationID = '"+MainWindowController.reservationID+"'";
+        myStatement="select * from reservation,customer where reservation.CustomerID=customer.CustomerID  and ReservationID = '"+MainWindowController.reservationID+"'";
 
 
         try {
@@ -105,19 +110,29 @@ public class CheckOutWindowController implements Initializable{
     public void coCalOnAction(ActionEvent event){
         conTime = cooTime.getText();
         conDate = date.format(cooDate.getValue());
-
         CheckOutProcess co = new CheckOutProcess(conDate,conTime);
         ciTotal.setText(co.mainProcess());
 
     }
 
     public void coCancelOnAction(ActionEvent event) throws IOException {
+        MainWindowController.process = 1;
         Parent root3 = FXMLLoader.load(getClass().getResource("ConfirmationWindow.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Confirm");
         stage.setScene(new Scene(root3));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+
+    }
+
+    public void coPayOnAction(ActionEvent event){
+        conTime = cooTime.getText();
+        conDate = date.format(cooDate.getValue());
+        CheckOutProcess co = new CheckOutProcess(conDate,conTime);
+        ciTotal.setText(co.mainProcess());
+        coRes.setText( co.checkout());
+
 
     }
 }

@@ -13,7 +13,7 @@ public class CheckOutProcess {
     DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     private String coDate,coTime,ciDate,hh;
-    private long days=0;
+    private long days=0, total=0;
 
     CheckOutProcess(String coDate,String coTime){
         this.coDate =coDate;
@@ -62,8 +62,8 @@ public class CheckOutProcess {
                     LocalDate localDate2 = LocalDate.parse(coDate);
 
                     days = Period.between(localDate1, localDate2).getDays();
-
-                    return "Rs. "+( days * selectPrice(rs.getInt("RoomNo")));
+                    total = days * selectPrice(rs.getInt("RoomNo"));
+                    return "Rs. "+ total;
 
                 }
 
@@ -78,6 +78,11 @@ public class CheckOutProcess {
 
         return null;
 
+    }
+
+    public String checkout(){
+
+        return "success";
     }
 
 }
