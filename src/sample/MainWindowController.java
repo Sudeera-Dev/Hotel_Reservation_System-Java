@@ -30,21 +30,25 @@ public class MainWindowController implements Initializable {
     ObservableList<String> pkgsList = FXCollections.observableArrayList("Package 1","Package 2","Package 3");
     ObservableList<String> timeSlotList = FXCollections.observableArrayList("Day","Night");
 
-    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck,ciCheckin;
+    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck,ciCheckin,erCheck;
     @FXML Pane rsPane,rrPane,sPane,repPane;
     @FXML ChoiceBox pkgs,timeSlot;
-    @FXML DatePicker ciDate;
+    @FXML DatePicker ciDate,erDate;
     @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp;
-    @FXML Label ciSelroom,ciDprice,ciResult;
+    @FXML Label ciSelroom,ciDprice,ciResult,erError;
+    @FXML Pane erPanel;
 
     private int ro1=0,ro2=0,ro3=0,ro4=0,ro5=0,ro6=0,ro7=0,ro8=0,ro9=0,ro10=0;
     private int ros1=0,ros2=0,ros3=0,ros4=0,ros5=0,ros6=0,ros7=0,ros8=0,ros9=0,ros10=0;
     static int reservationID= 0,process=0;
+    static String cuDate,ercDate,ercTime;
 
     DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
 
-    String neTime,nDate,cuDate;
+    String neTime,nDate;
+
+    LocalDateTime now = LocalDateTime.now();
 
     private Connection getConnection() {
         Connection myConn = mdc.getMyConnection();
@@ -119,7 +123,6 @@ public class MainWindowController implements Initializable {
     }
 
     private void reservedRoom() {
-        LocalDateTime now = LocalDateTime.now();
 
         String myStatement;
         myStatement="select * from reservation where  Check_out_date >= \""+date.format(now)+"\" or Check_out_date is NULL";
@@ -173,6 +176,7 @@ public class MainWindowController implements Initializable {
         navBtn3.setStyle("-fx-background-color: #0c447b");
         navBtn4.setStyle("-fx-background-color: #0c447b");
         rrPane.toFront();
+        erPanel.setVisible(false);
     }
 
     public void NavBtn3OnAction(ActionEvent event){
@@ -541,6 +545,47 @@ public class MainWindowController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
+    }
+
+    public void erCheckOnAction(ActionEvent event){
+        ercDate = erDate.getValue().toString();
+        ercTime = timeSlot.getValue().toString();
+        checkEventDate();
+    }
+
+    private void checkEventDate(){
+        String myStatement;
+        int count=0;
+        myStatement= "SELECT * FROM event where date= '"+ercDate+"' and Time= '"+ercTime+"'";
+
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(myStatement);
+            while (rs.next()) {
+                count++;
+
+            }
+
+            if(count == 0){
+                erPanel.setVisible(true);
+                erError.setText("");
+            }else{
+                erPanel.setVisible(false);
+                erError.setText("Not Available");
+                Parent root2 = FXMLLoader.load(getClass().getResource("EditWindow.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("Event Details");
+                stage.setScene(new Scene(root2));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+
+            }
+
+            } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+
+
     }
 
 }
