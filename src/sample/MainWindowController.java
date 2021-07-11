@@ -60,12 +60,69 @@ public class MainWindowController implements Initializable {
         rsPane.toFront();
     }
 
+    private void roomReserveSetter(String myStatement) throws SQLException {
+        stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(myStatement);
+        while (rs.next()) {
+            if (rs.getInt("RoomNo") == 1) {
+                ro1 = 3;
+                r1.setStyle("-fx-background-color: red");
+                ros1 = rs.getInt("ReservationID");
+                rosb1 = rs.getInt("BillID");
+            } else if (rs.getInt("RoomNo") == 2) {
+                ro2 = 3;
+                ros2 = rs.getInt("ReservationID");
+                rosb2 = rs.getInt("BillID");
+            } else if (rs.getInt("RoomNo") == 3) {
+                ro3 = 3;
+                r3.setStyle("-fx-background-color: red");
+                ros3 = rs.getInt("ReservationID");
+                rosb3 = rs.getInt("BillID");
+            } else if (rs.getInt("RoomNo") == 4) {
+                ro4 = 3;
+                r4.setStyle("-fx-background-color: red");
+                ros4 = rs.getInt("ReservationID");
+                rosb4 = rs.getInt("BillID");
+            } else if (rs.getInt("RoomNo") == 5) {
+                ro5 = 3;
+                r5.setStyle("-fx-background-color: red");
+                ros5 = rs.getInt("ReservationID");
+                rosb5 = rs.getInt("BillID");
+            } else if (rs.getInt("RoomNo") == 6) {
+                ro6 = 3;
+                r6.setStyle("-fx-background-color: red");
+                ros6 = rs.getInt("ReservationID");
+                rosb6 = rs.getInt("BillID");
+            } else if (rs.getInt("RoomNo") == 7) {
+                ro7 = 3;
+                r7.setStyle("-fx-background-color: red");
+                ros7 = rs.getInt("ReservationID");
+                rosb7 = rs.getInt("BillID");
+            } else if (rs.getInt("RoomNo") == 8) {
+                ro8 = 3;
+                r8.setStyle("-fx-background-color: red");
+                ros8 = rs.getInt("ReservationID");
+                rosb8 = rs.getInt("BillID");
+            } else if (rs.getInt("RoomNo") == 9) {
+                ro9 = 3;
+                r9.setStyle("-fx-background-color: red");
+                ros9 = rs.getInt("ReservationID");
+                rosb9 = rs.getInt("BillID");
+            } else if (rs.getInt("RoomNo") == 10) {
+                ro10 = 3;
+                r10.setStyle("-fx-background-color: red");
+                ros10 = rs.getInt("ReservationID");
+                rosb10 = rs.getInt("BillID");
+            }
+        }
+
+    }
+
     private void reservedRoom() {
         LocalDateTime now = LocalDateTime.now();
 
         String myStatement;
-
-        myStatement="select * from bill,bill_reservation,reservation where BillID = Bill_id and Reservation_id = ReservationID and (Check_in_date <= \""+date.format(now)+"\" and (Check_out_date >= \""+date.format(now)+"\" or Check_out_date is NULL)) and (Check_in_time <=\""+time.format(now)+"\" and (Check_out_time >= \""+time.format(now)+"\" or Check_out_time is NULL))";
+        myStatement="select * from bill,bill_reservation,reservation where BillID = Bill_id and Reservation_id = ReservationID and (Check_out_date >= \""+date.format(now)+"\" or Check_out_date is NULL)";
 
         neTime=time.format(now);
         nDate=date.format(now);
@@ -74,91 +131,18 @@ public class MainWindowController implements Initializable {
         ciTime.setText(time.format(now).toString());
 
         try {
-            stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(myStatement);
-
-            while(rs.next()){
-                if(rs.getInt("RoomNo") == 1){
-                    ro1=3;
-                    r1.setStyle("-fx-background-color: red");
-                    ros1 = rs.getInt("ReservationID");
-                    rosb1=rs.getInt("BillID");
-                }else if(rs.getInt("RoomNo") == 2){
-                    ro2=3;
-                    ros2 = rs.getInt("ReservationID");
-                    rosb2=rs.getInt("BillID");
-                }else if(rs.getInt("RoomNo") == 3){
-                    ro3=3;
-                    r3.setStyle("-fx-background-color: red");
-                    ros3 = rs.getInt("ReservationID");
-                    rosb3=rs.getInt("BillID");
-                }else if(rs.getInt("RoomNo") == 4){
-                    ro4=3;
-                    r4.setStyle("-fx-background-color: red");
-                    ros4 = rs.getInt("ReservationID");
-                    rosb4=rs.getInt("BillID");
-                }else if(rs.getInt("RoomNo") == 5){
-                    ro5=3;
-                    r5.setStyle("-fx-background-color: red");
-                    ros5 = rs.getInt("ReservationID");
-                    rosb5=rs.getInt("BillID");
-                }else if(rs.getInt("RoomNo") == 6){
-                    ro6=3;
-                    r6.setStyle("-fx-background-color: red");
-                    ros6 = rs.getInt("ReservationID");
-                    rosb6=rs.getInt("BillID");
-                }else if(rs.getInt("RoomNo") == 7){
-                    ro7=3;
-                    r7.setStyle("-fx-background-color: red");
-                    ros7 = rs.getInt("ReservationID");
-                    rosb7=rs.getInt("BillID");
-                }else if(rs.getInt("RoomNo") == 8){
-                    ro8=3;
-                    r8.setStyle("-fx-background-color: red");
-                    ros8 = rs.getInt("ReservationID");
-                    rosb8=rs.getInt("BillID");
-                }else if(rs.getInt("RoomNo") == 9){
-                    ro9=3;
-                    r9.setStyle("-fx-background-color: red");
-                    ros9 = rs.getInt("ReservationID");
-                    rosb9=rs.getInt("BillID");
-                }else if(rs.getInt("RoomNo") == 10){
-                    ro10=3;
-                    r10.setStyle("-fx-background-color: red");
-                    ros10 = rs.getInt("ReservationID");
-                    rosb10=rs.getInt("BillID");
-                }
-            }
+            roomReserveSetter(myStatement);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
 
         System.out.println(myStatement);
     }
 
     public void ciClearOnAction(ActionEvent event){
 
-        r1.setStyle("-fx-background-color: green");
-        r2.setStyle("-fx-background-color: green");
-        r3.setStyle("-fx-background-color: green");
-        r4.setStyle("-fx-background-color: green");
-        r5.setStyle("-fx-background-color: green");
-        r6.setStyle("-fx-background-color: green");
-        r7.setStyle("-fx-background-color: green");
-        r8.setStyle("-fx-background-color: green");
-        r9.setStyle("-fx-background-color: green");
-        r10.setStyle("-fx-background-color: green");
-
-        ro1=0;
-        ro2=0;
-        ro3=0;
-        ro4=0;
-        ro5=0;
-        ro6=0;
-        ro7=0;
-        ro8=0;
-        ro9=0;
-        ro10=0;
+        resetButtons();
 
         ciTime.setText("");
         ciDate.setValue(null);
@@ -254,51 +238,17 @@ public class MainWindowController implements Initializable {
         String nTime = ciTime.getText();
 
         if(nTime.length() == 5){
+            resetButtons();
             neTime = nTime;
             nDate = date.format(ciDate.getValue());
 
             String myStatement;
 
-            myStatement="select * from bill,bill_reservation,reservation where BillID = Bill_id and Reservation_id = ReservationID and (Check_in_date <= \""+nDate+"\" and (Check_out_date >= \""+nDate+"\" or Check_out_date is NULL)) and (Check_in_time <=\""+neTime+"\" and (Check_out_time >= \""+neTime+"\" or Check_out_time is NULL))";
+            myStatement="select * from bill,bill_reservation,reservation where BillID = Bill_id and Reservation_id = ReservationID and (Check_out_date >= \""+nDate+"\" or Check_out_date is NULL)";
 
 
             try {
-                stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery(myStatement);
-
-                while(rs.next()){
-                    if(rs.getInt("RoomNo") == 1){
-                        ro1=3;
-                        r1.setStyle("-fx-background-color: red");
-                    }else if(rs.getInt("RoomNo") == 2){
-                        ro2=3;
-                        r2.setStyle("-fx-background-color: red");
-                    }else if(rs.getInt("RoomNo") == 3){
-                        ro3=3;
-                        r3.setStyle("-fx-background-color: red");
-                    }else if(rs.getInt("RoomNo") == 4){
-                        ro4=3;
-                        r4.setStyle("-fx-background-color: red");
-                    }else if(rs.getInt("RoomNo") == 5){
-                        ro5=3;
-                        r5.setStyle("-fx-background-color: red");
-                    }else if(rs.getInt("RoomNo") == 6){
-                        ro6=3;
-                        r6.setStyle("-fx-background-color: red");
-                    }else if(rs.getInt("RoomNo") == 7){
-                        ro7=3;
-                        r7.setStyle("-fx-background-color: red");
-                    }else if(rs.getInt("RoomNo") == 8){
-                        ro8=3;
-                        r8.setStyle("-fx-background-color: red");
-                    }else if(rs.getInt("RoomNo") == 9){
-                        ro9=3;
-                        r9.setStyle("-fx-background-color: red");
-                    }else if(rs.getInt("RoomNo") == 10){
-                        ro10=3;
-                        r10.setStyle("-fx-background-color: red");
-                    }
-                }
+                roomReserveSetter(myStatement);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -308,32 +258,58 @@ public class MainWindowController implements Initializable {
 
     }
 
+    private void resetButtons(){
+        if(ro1 != 3){
+            r1.setStyle("-fx-background-color: green");
+            ro1=0;
+        }
+        if(ro2 != 3){
+            r2.setStyle("-fx-background-color: green");
+            ro2=0;
+        }
+        if(ro3 != 3){
+            r3.setStyle("-fx-background-color: green");
+            ro3=0;
+        }
+        if(ro4 != 3){
+            r4.setStyle("-fx-background-color: green");
+            ro4=0;
+        }
+        if(ro5 != 3){
+            r5.setStyle("-fx-background-color: green");
+            ro5=0;
+        }
+        if(ro6 != 3){
+            r6.setStyle("-fx-background-color: green");
+            ro7=0;
+        }
+        if(ro8 != 3){
+            r8.setStyle("-fx-background-color: green");
+            ro8=0;
+        }
+        if(ro9 != 3){
+            r9.setStyle("-fx-background-color: green");
+            ro9=0;
+        }
+        if(ro10 != 3){
+            r10.setStyle("-fx-background-color: green");
+            ro10=0;
+        }
+        if(ro7 != 3){
+            r7.setStyle("-fx-background-color: green");
+            ro7=0;
+        }
+
+    }
+
     public void r7OnAction(ActionEvent event) throws IOException {
         if (ro7 == 1) {
             r7.setStyle("-fx-background-color: green");
             ro7 = 0;
         }else if(ro7 == 0){
-            r1.setStyle("-fx-background-color: green");
-            r2.setStyle("-fx-background-color: green");
-            r3.setStyle("-fx-background-color: green");
-            r4.setStyle("-fx-background-color: green");
-            r5.setStyle("-fx-background-color: green");
-            r6.setStyle("-fx-background-color: green");
-            r7.setStyle("-fx-background-color: green");
-            r8.setStyle("-fx-background-color: green");
-            r9.setStyle("-fx-background-color: green");
-            r10.setStyle("-fx-background-color: green");
 
-            ro1=0;
-            ro2=0;
-            ro3=0;
-            ro4=0;
-            ro5=0;
-            ro6=0;
-            ro7=0;
-            ro8=0;
-            ro9=0;
-            ro10=0;
+            resetButtons();
+            reservedRoom();
 
             ciDprice.setText("Rs. 1500.00 per day");
             r7.setStyle("-fx-background-color: #dede01");
@@ -355,27 +331,8 @@ public class MainWindowController implements Initializable {
             r1.setStyle("-fx-background-color: green");
             ro1 = 0;
         }else if(ro1 == 0){
-            r1.setStyle("-fx-background-color: green");
-            r2.setStyle("-fx-background-color: green");
-            r3.setStyle("-fx-background-color: green");
-            r4.setStyle("-fx-background-color: green");
-            r5.setStyle("-fx-background-color: green");
-            r6.setStyle("-fx-background-color: green");
-            r7.setStyle("-fx-background-color: green");
-            r8.setStyle("-fx-background-color: green");
-            r9.setStyle("-fx-background-color: green");
-            r10.setStyle("-fx-background-color: green");
-
-            ro1=0;
-            ro2=0;
-            ro3=0;
-            ro4=0;
-            ro5=0;
-            ro6=0;
-            ro7=0;
-            ro8=0;
-            ro9=0;
-            ro10=0;
+            resetButtons();
+            reservedRoom();
 
             ciDprice.setText("Rs. 3000.00 per day");
             r1.setStyle("-fx-background-color: #dede01");
@@ -397,27 +354,8 @@ public class MainWindowController implements Initializable {
             r2.setStyle("-fx-background-color: green");
             ro2 = 0;
         }else if(ro2 == 0){
-            r1.setStyle("-fx-background-color: green");
-            r2.setStyle("-fx-background-color: green");
-            r3.setStyle("-fx-background-color: green");
-            r4.setStyle("-fx-background-color: green");
-            r5.setStyle("-fx-background-color: green");
-            r6.setStyle("-fx-background-color: green");
-            r7.setStyle("-fx-background-color: green");
-            r8.setStyle("-fx-background-color: green");
-            r9.setStyle("-fx-background-color: green");
-            r10.setStyle("-fx-background-color: green");
-
-            ro1=0;
-            ro2=0;
-            ro3=0;
-            ro4=0;
-            ro5=0;
-            ro6=0;
-            ro7=0;
-            ro8=0;
-            ro9=0;
-            ro10=0;
+            resetButtons();
+            reservedRoom();
 
             ciDprice.setText("Rs. 3000.00 per day");
             r2.setStyle("-fx-background-color: #dede01");
@@ -439,27 +377,8 @@ public class MainWindowController implements Initializable {
             r3.setStyle("-fx-background-color: green");
             ro3 = 0;
         }else if(ro3 == 0){
-            r1.setStyle("-fx-background-color: green");
-            r2.setStyle("-fx-background-color: green");
-            r3.setStyle("-fx-background-color: green");
-            r4.setStyle("-fx-background-color: green");
-            r5.setStyle("-fx-background-color: green");
-            r6.setStyle("-fx-background-color: green");
-            r7.setStyle("-fx-background-color: green");
-            r8.setStyle("-fx-background-color: green");
-            r9.setStyle("-fx-background-color: green");
-            r10.setStyle("-fx-background-color: green");
-
-            ro1=0;
-            ro2=0;
-            ro3=0;
-            ro4=0;
-            ro5=0;
-            ro6=0;
-            ro7=0;
-            ro8=0;
-            ro9=0;
-            ro10=0;
+            resetButtons();
+            reservedRoom();
 
             ciDprice.setText("Rs. 3000.00 per day");
             r3.setStyle("-fx-background-color: #dede01");
@@ -481,27 +400,8 @@ public class MainWindowController implements Initializable {
             r4.setStyle("-fx-background-color: green");
             ro4 = 0;
         }else if(ro4 == 0){
-            r1.setStyle("-fx-background-color: green");
-            r2.setStyle("-fx-background-color: green");
-            r3.setStyle("-fx-background-color: green");
-            r4.setStyle("-fx-background-color: green");
-            r5.setStyle("-fx-background-color: green");
-            r6.setStyle("-fx-background-color: green");
-            r7.setStyle("-fx-background-color: green");
-            r8.setStyle("-fx-background-color: green");
-            r9.setStyle("-fx-background-color: green");
-            r10.setStyle("-fx-background-color: green");
-
-            ro1=0;
-            ro2=0;
-            ro3=0;
-            ro4=0;
-            ro5=0;
-            ro6=0;
-            ro7=0;
-            ro8=0;
-            ro9=0;
-            ro10=0;
+            resetButtons();
+            reservedRoom();
 
             ciDprice.setText("Rs. 1000.00 per day");
             r4.setStyle("-fx-background-color: #dede01");
@@ -523,27 +423,8 @@ public class MainWindowController implements Initializable {
             r5.setStyle("-fx-background-color: green");
             ro5 = 0;
         }else if(ro5 == 0){
-            r1.setStyle("-fx-background-color: green");
-            r2.setStyle("-fx-background-color: green");
-            r3.setStyle("-fx-background-color: green");
-            r4.setStyle("-fx-background-color: green");
-            r5.setStyle("-fx-background-color: green");
-            r6.setStyle("-fx-background-color: green");
-            r7.setStyle("-fx-background-color: green");
-            r8.setStyle("-fx-background-color: green");
-            r9.setStyle("-fx-background-color: green");
-            r10.setStyle("-fx-background-color: green");
-
-            ro1=0;
-            ro2=0;
-            ro3=0;
-            ro4=0;
-            ro5=0;
-            ro6=0;
-            ro7=0;
-            ro8=0;
-            ro9=0;
-            ro10=0;
+            resetButtons();
+            reservedRoom();
 
             ciDprice.setText("Rs. 1000.00 per day");
             r5.setStyle("-fx-background-color: #dede01");
@@ -565,27 +446,8 @@ public class MainWindowController implements Initializable {
             r6.setStyle("-fx-background-color: green");
             ro6 = 0;
         }else if(ro6 == 0){
-            r1.setStyle("-fx-background-color: green");
-            r2.setStyle("-fx-background-color: green");
-            r3.setStyle("-fx-background-color: green");
-            r4.setStyle("-fx-background-color: green");
-            r5.setStyle("-fx-background-color: green");
-            r6.setStyle("-fx-background-color: green");
-            r7.setStyle("-fx-background-color: green");
-            r8.setStyle("-fx-background-color: green");
-            r9.setStyle("-fx-background-color: green");
-            r10.setStyle("-fx-background-color: green");
-
-            ro1=0;
-            ro2=0;
-            ro3=0;
-            ro4=0;
-            ro5=0;
-            ro6=0;
-            ro7=0;
-            ro8=0;
-            ro9=0;
-            ro10=0;
+            resetButtons();
+            reservedRoom();
 
             ciDprice.setText("Rs. 1000.00 per day");
             r6.setStyle("-fx-background-color: #dede01");
@@ -607,27 +469,8 @@ public class MainWindowController implements Initializable {
             r8.setStyle("-fx-background-color: green");
             ro8 = 0;
         }else if(ro8 == 0){
-            r1.setStyle("-fx-background-color: green");
-            r2.setStyle("-fx-background-color: green");
-            r3.setStyle("-fx-background-color: green");
-            r4.setStyle("-fx-background-color: green");
-            r5.setStyle("-fx-background-color: green");
-            r6.setStyle("-fx-background-color: green");
-            r7.setStyle("-fx-background-color: green");
-            r8.setStyle("-fx-background-color: green");
-            r9.setStyle("-fx-background-color: green");
-            r10.setStyle("-fx-background-color: green");
-
-            ro1=0;
-            ro2=0;
-            ro3=0;
-            ro4=0;
-            ro5=0;
-            ro6=0;
-            ro7=0;
-            ro8=0;
-            ro9=0;
-            ro10=0;
+            resetButtons();
+            reservedRoom();
 
             ciDprice.setText("Rs. 1500.00 per day");
             r8.setStyle("-fx-background-color: #dede01");
@@ -649,27 +492,8 @@ public class MainWindowController implements Initializable {
             r9.setStyle("-fx-background-color: green");
             ro9 = 0;
         }else if(ro9 == 0){
-            r1.setStyle("-fx-background-color: green");
-            r2.setStyle("-fx-background-color: green");
-            r3.setStyle("-fx-background-color: green");
-            r4.setStyle("-fx-background-color: green");
-            r5.setStyle("-fx-background-color: green");
-            r6.setStyle("-fx-background-color: green");
-            r7.setStyle("-fx-background-color: green");
-            r8.setStyle("-fx-background-color: green");
-            r9.setStyle("-fx-background-color: green");
-            r10.setStyle("-fx-background-color: green");
-
-            ro1=0;
-            ro2=0;
-            ro3=0;
-            ro4=0;
-            ro5=0;
-            ro6=0;
-            ro7=0;
-            ro8=0;
-            ro9=0;
-            ro10=0;
+            resetButtons();
+            reservedRoom();
 
             ciDprice.setText("Rs. 1500.00 per day");
             r9.setStyle("-fx-background-color: #dede01");
@@ -691,27 +515,8 @@ public class MainWindowController implements Initializable {
             r10.setStyle("-fx-background-color: green");
             ro10 = 0;
         }else if(ro10 == 0){
-            r1.setStyle("-fx-background-color: green");
-            r2.setStyle("-fx-background-color: green");
-            r3.setStyle("-fx-background-color: green");
-            r4.setStyle("-fx-background-color: green");
-            r5.setStyle("-fx-background-color: green");
-            r6.setStyle("-fx-background-color: green");
-            r7.setStyle("-fx-background-color: green");
-            r8.setStyle("-fx-background-color: green");
-            r9.setStyle("-fx-background-color: green");
-            r10.setStyle("-fx-background-color: green");
-
-            ro1=0;
-            ro2=0;
-            ro3=0;
-            ro4=0;
-            ro5=0;
-            ro6=0;
-            ro7=0;
-            ro8=0;
-            ro9=0;
-            ro10=0;
+            resetButtons();
+            reservedRoom();
 
             ciDprice.setText("Rs. 1500.00 per day");
             r10.setStyle("-fx-background-color: #dede01");
