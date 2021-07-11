@@ -24,9 +24,10 @@ public class CheckOutWindowController implements Initializable{
     Connection con = getConnection();
     Statement stmt;
 
-    @FXML Label rmNo,coName,coAdd,coTime,coId,coVehino,coSelroom,coTp;
+    @FXML Label rmNo,coName,coAdd,coTime,coId,coVehino,coSelroom,coTp,ciTotal;
     @FXML TextField cooTime;
     @FXML DatePicker cooDate;
+    @FXML Button coCal;
 
     DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
@@ -68,6 +69,7 @@ public class CheckOutWindowController implements Initializable{
                 coId.setText(rs.getString("NIC"));
                 coVehino.setText(rs.getString("VehicleNum"));
                 coTp.setText(rs.getString("TP"));
+                coTime.setText(rs.getString("Check_in_date"));
                 if(rs.getInt("RoomNo") == 1){
                     coSelroom.setText("Room 1 - AC - Double Bed");
                 }else if(rs.getInt("RoomNo") == 2){
@@ -96,6 +98,15 @@ public class CheckOutWindowController implements Initializable{
         }
 
         System.out.println(myStatement);
+
+    }
+
+    public void coCalOnAction(ActionEvent event){
+        conTime = cooTime.getText();
+        conDate = date.format(cooDate.getValue());
+
+        CheckOutProcess co = new CheckOutProcess(conDate,conTime);
+        ciTotal.setText(co.mainProcess());
 
     }
 }

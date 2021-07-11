@@ -18,7 +18,7 @@
                               <Font name="Gadugi Bold" size="30.0" />
                            </font>
                         </Label>
-                        <Label layoutX="145.0" layoutY="3.0" text="Rs. 2500.00">
+                        <Label fx:id="ciTotal" layoutX="145.0" layoutY="3.0" text="Rs. 2500.00">
                            <font>
                               <Font name="Gadugi Bold" size="30.0" />
                            </font>
@@ -118,7 +118,7 @@
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
-            <Button layoutX="499.0" layoutY="241.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" stylesheets="@myStyle.css" text="Calculate" textFill="WHITE">
+            <Button fx:id="coCal" layoutX="499.0" layoutY="241.0" mnemonicParsing="false" onAction="#coCalOnAction" prefHeight="37.0" prefWidth="99.0" stylesheets="@myStyle.css" text="Calculate" textFill="WHITE">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
