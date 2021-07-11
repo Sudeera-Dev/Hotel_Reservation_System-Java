@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.beans.Observable;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +14,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -30,16 +34,18 @@ public class MainWindowController implements Initializable {
     ObservableList<String> pkgsList = FXCollections.observableArrayList("Package 1","Package 2","Package 3");
     ObservableList<String> timeSlotList = FXCollections.observableArrayList("Day","Night");
 
-    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck,ciCheckin,erCheck;
+    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck,ciCheckin,erCheck,erClear,erCal;
     @FXML Pane rsPane,rrPane,sPane,repPane;
     @FXML ChoiceBox pkgs,timeSlot;
     @FXML DatePicker ciDate,erDate;
-    @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp;
-    @FXML Label ciSelroom,ciDprice,ciResult,erError;
+    @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp,erName,erTp,erAdd,erNop,erId;
+    @FXML Label ciSelroom,ciDprice,ciResult,erError,noPlates,erTotalVal,erSubTotalVal,erHall;
     @FXML Pane erPanel;
 
     private int ro1=0,ro2=0,ro3=0,ro4=0,ro5=0,ro6=0,ro7=0,ro8=0,ro9=0,ro10=0;
     private int ros1=0,ros2=0,ros3=0,ros4=0,ros5=0,ros6=0,ros7=0,ros8=0,ros9=0,ros10=0;
+    private int pkg=0;
+    private double subTotal=0,total=0;
     static int reservationID= 0,process=0;
     static String cuDate,ercDate,ercTime;
 
@@ -62,6 +68,25 @@ public class MainWindowController implements Initializable {
         timeSlot.setItems(timeSlotList);
         reservedRoom();
         rsPane.toFront();
+
+        pkgs.getSelectionModel().selectedIndexProperty().addListener(
+                (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+                    int selection=new_val.intValue();
+                    if(selection == 0){
+                        noPlates.setText("Rs. 990 per Plate");
+                        pkg= selection+1;
+                    }else if(selection == 1){
+                        noPlates.setText("Rs. 790 per Plate");
+                        pkg= selection+1;
+                    }else if(selection == 2){
+                        noPlates.setText("Rs. 690 per Plate");
+                        pkg= selection+1;
+                    }else{
+
+                    }
+
+                });
+
     }
 
     private void roomReserveSetter(String myStatement) throws SQLException {
@@ -586,6 +611,64 @@ public class MainWindowController implements Initializable {
         }
 
 
+    }
+
+    public void erClearOnAction(ActionEvent event){
+        erName.setText("");
+        erAdd.setText("");
+        erNop.setText("");
+        erId.setText("");
+        erTp.setText("");
+        pkgs.setItems(pkgsList);
+        noPlates.setText("");
+        erSubTotalVal.setText("");
+        erTotalVal.setText("");
+        erHall.setText("");
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+    public void erCalOnAction(ActionEvent event){
+        int plate=0;
+        int hall = 10000;
+        if(!(erNop.getText().equals(""))){
+            if(isNumeric(erNop.getText())){
+                    erHall.setText("Rs. "+ hall+".00");
+                    if(pkg==1){
+                        plate = 990;
+                    }else if(pkg==2){
+                        plate = 790;
+                    }else if(pkg==3){
+                        plate = 690;
+                    }else{
+
+                    }
+                    if (Integer.parseInt(erNop.getText()) >= 200){
+                        hall=0;
+                        erHall.setText("Free");
+                    }
+
+                    subTotal=Double.parseDouble(String.format("%.2f",(double)(Integer.parseInt(erNop.getText()) * plate )));
+                    total = Double.parseDouble(String.format("%.2f",(subTotal +hall)*110/100));
+                    erSubTotalVal.setText("Rs. "+ subTotal);
+                    erTotalVal.setText("Rs. "+ total);
+
+                }else{
+                    erError.setText("invalid input");
+                }
+        }else{
+            erError.setText("Fill the number of plates field");
+        }
     }
 
 }
