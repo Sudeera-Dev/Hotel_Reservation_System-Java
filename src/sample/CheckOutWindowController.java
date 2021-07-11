@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +28,7 @@ public class CheckOutWindowController implements Initializable{
     @FXML Label rmNo,coName,coAdd,coTime,coId,coVehino,coSelroom,coTp,ciTotal;
     @FXML TextField cooTime;
     @FXML DatePicker cooDate;
-    @FXML Button coCal;
+    @FXML Button coCal,ciCancel;
 
     DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
@@ -107,6 +108,16 @@ public class CheckOutWindowController implements Initializable{
 
         CheckOutProcess co = new CheckOutProcess(conDate,conTime);
         ciTotal.setText(co.mainProcess());
+
+    }
+
+    public void coCancelOnAction(ActionEvent event) throws IOException {
+        Parent root3 = FXMLLoader.load(getClass().getResource("ConfirmationWindow.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Confirm");
+        stage.setScene(new Scene(root3));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
 
     }
 }

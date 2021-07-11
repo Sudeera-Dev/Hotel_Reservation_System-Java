@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -39,7 +40,7 @@ public class MainWindowController implements Initializable {
     private int ro1=0,ro2=0,ro3=0,ro4=0,ro5=0,ro6=0,ro7=0,ro8=0,ro9=0,ro10=0;
     private int ros1=0,ros2=0,ros3=0,ros4=0,ros5=0,ros6=0,ros7=0,ros8=0,ros9=0,ros10=0;
     private int rosb1=0,rosb2=0,rosb3=0,rosb4=0,rosb5=0,rosb6=0,rosb7=0,rosb8=0,rosb9=0,rosb10=0;
-    static int reservationID= 0,billID=0;
+    static int reservationID= 0,billID=0,process=0;
 
     DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
@@ -322,6 +323,7 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Check Out");
             stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }
@@ -345,6 +347,7 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Check Out");
             stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }
@@ -368,6 +371,7 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Check Out");
             stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }
@@ -391,6 +395,7 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Check Out");
             stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }
@@ -414,6 +419,7 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Check Out");
             stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }
@@ -437,6 +443,7 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Check Out");
             stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }
@@ -460,6 +467,7 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Check Out");
             stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }
@@ -483,6 +491,7 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Check Out");
             stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }
@@ -506,6 +515,7 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Check Out");
             stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }
@@ -529,6 +539,7 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Check Out");
             stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         }
     }
