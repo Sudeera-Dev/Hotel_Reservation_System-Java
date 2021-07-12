@@ -47,7 +47,7 @@ public class CheckinProcess {
                 Matcher matcher = pattern.matcher(tp);
                 if(matcher.matches()){
                     if(id.length() > 9){
-                        CheckIn();
+
                     }else{
                         return "invalid id";
                     }
@@ -58,7 +58,7 @@ public class CheckinProcess {
                 return "Select a room";
             }
         }
-        return null;
+        return CheckIn();
     }
 
     private String CheckIn(){
