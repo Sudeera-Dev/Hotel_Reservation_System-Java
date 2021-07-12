@@ -41,12 +41,13 @@ public class MainWindowController implements Initializable {
     @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp,erName,erTp,erAdd,erNop,erId,erDisc,erPayment;
     @FXML Label ciSelroom,ciDprice,ciResult,erError,noPlates,erTotalVal,erSubTotalVal,erHall;
     @FXML Pane erPanel;
+    @FXML TableView table;
 
     private int ro1=0,ro2=0,ro3=0,ro4=0,ro5=0,ro6=0,ro7=0,ro8=0,ro9=0,ro10=0;
     private int ros1=0,ros2=0,ros3=0,ros4=0,ros5=0,ros6=0,ros7=0,ros8=0,ros9=0,ros10=0;
     private int pkg=0,plate=0;
     private double subTotal=0,total=0,discount=0,hall = 10000;
-    static int reservationID= 0,process=0;
+    static int reservationID= 0,billId=0,process=0;
     static String cuDate,ercDate,ercTime;
 
     DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -693,6 +694,11 @@ public class MainWindowController implements Initializable {
 
         EventReservation er = new EventReservation(name,add,nop,Id,tp,discount,total,payment);
         erError.setText(er.mainProcess());
+
+    }
+
+    public void seSearchOnAction(ActionEvent event){
+
 
     }
 

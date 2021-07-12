@@ -42,96 +42,6 @@
             </Pane>
          </children>
       </Group>
-      <Pane fx:id="repPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
-         <children>
-            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
-               <children>
-                  <Pane layoutX="3.0" layoutY="115.0" prefHeight="561.0" prefWidth="796.0">
-                     <children>
-                        <TableView layoutX="23.0" layoutY="13.0" prefHeight="519.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
-                           <columns>
-                              <TableColumn prefWidth="110" text="1" />
-                              <TableColumn prefWidth="110.0" text="2" />
-                              <TableColumn prefWidth="110.0" text="2" />
-                              <TableColumn prefWidth="110.0" text="3" />
-                              <TableColumn prefWidth="110.0" text="4" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="27.0" layoutY="16.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: #0c447b; -fx-background-radius: 30;">
-                     <children>
-                        <Button layoutX="350.0" layoutY="20.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="View">
-                           <font>
-                              <Font name="Gadugi Bold" size="14.0" />
-                           </font>
-                        </Button>
-                        <TextField layoutX="24.0" layoutY="20.0" prefHeight="38.0" prefWidth="180.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <ChoiceBox fx:id="ciTime1" layoutX="225.0" layoutY="20.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="timebtn" stylesheets="@myStyle.css" />
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-            <Label layoutX="357.0" layoutY="24.0" text="Reports">
-               <font>
-                  <Font name="Gadugi Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane fx:id="sPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
-         <children>
-            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
-               <children>
-                  <Pane layoutX="3.0" layoutY="115.0" prefHeight="561.0" prefWidth="796.0">
-                     <children>
-                        <TableView layoutX="23.0" layoutY="63.0" prefHeight="469.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
-                          <columns>
-                            <TableColumn prefWidth="110" text="Bill ID" />
-                            <TableColumn prefWidth="110.0" text="Customer name" />
-                             <TableColumn prefWidth="110.0" text="Type" />
-                             <TableColumn prefWidth="110.0" text="Customer name" />
-                             <TableColumn prefWidth="110.0" text="Contact number" />
-                          </columns>
-                        </TableView>
-                        <TextField layoutX="179.0" layoutY="14.0" prefHeight="38.0" prefWidth="350.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Button layoutX="538.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="View">
-                           <font>
-                              <Font name="Gadugi Bold" size="14.0" />
-                           </font>
-                        </Button>
-                     </children></Pane>
-                  <Pane layoutX="27.0" layoutY="16.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: #0c447b; -fx-background-radius: 30;">
-                     <children>
-                        <Button layoutX="644.0" layoutY="20.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="Search">
-                           <font>
-                              <Font name="Gadugi Bold" size="14.0" />
-                           </font>
-                        </Button>
-                        <TextField layoutX="24.0" layoutY="20.0" prefHeight="38.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-            <Label layoutX="365.0" layoutY="25.0" text="Search">
-               <font>
-                  <Font name="Gadugi Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
       <Pane fx:id="rsPane" layoutX="200.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="282.0" layoutY="24.0" text="Room Reservation">
@@ -495,6 +405,96 @@
                   </Label>
                </children></Pane>
             <Label layoutX="286.0" layoutY="24.0" text="Event Reservation">
+               <font>
+                  <Font name="Gadugi Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="repPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
+               <children>
+                  <Pane layoutX="3.0" layoutY="115.0" prefHeight="561.0" prefWidth="796.0">
+                     <children>
+                        <TableView layoutX="23.0" layoutY="13.0" prefHeight="519.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
+                           <columns>
+                              <TableColumn prefWidth="110" text="1" />
+                              <TableColumn prefWidth="110.0" text="2" />
+                              <TableColumn prefWidth="110.0" text="2" />
+                              <TableColumn prefWidth="110.0" text="3" />
+                              <TableColumn prefWidth="110.0" text="4" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="27.0" layoutY="16.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: #0c447b; -fx-background-radius: 30;">
+                     <children>
+                        <Button layoutX="350.0" layoutY="20.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="View">
+                           <font>
+                              <Font name="Gadugi Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField layoutX="24.0" layoutY="20.0" prefHeight="38.0" prefWidth="180.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <ChoiceBox fx:id="ciTime1" layoutX="225.0" layoutY="20.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="timebtn" stylesheets="@myStyle.css" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Label layoutX="357.0" layoutY="24.0" text="Reports">
+               <font>
+                  <Font name="Gadugi Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="sPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
+               <children>
+                  <Pane layoutX="3.0" layoutY="115.0" prefHeight="561.0" prefWidth="796.0">
+                     <children>
+                        <TableView fx:id="table" layoutX="23.0" layoutY="63.0" prefHeight="469.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
+                          <columns>
+                            <TableColumn prefWidth="110" text="Bill ID" />
+                            <TableColumn prefWidth="110.0" text="Customer name" />
+                             <TableColumn prefWidth="110.0" text="Type" />
+                             <TableColumn prefWidth="110.0" text="Customer name" />
+                             <TableColumn prefWidth="110.0" text="Contact number" />
+                          </columns>
+                        </TableView>
+                        <TextField layoutX="179.0" layoutY="14.0" prefHeight="38.0" prefWidth="350.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Button layoutX="538.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="View">
+                           <font>
+                              <Font name="Gadugi Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children></Pane>
+                  <Pane layoutX="27.0" layoutY="16.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: #0c447b; -fx-background-radius: 30;">
+                     <children>
+                        <Button fx:id="seSearch" layoutX="644.0" layoutY="20.0" mnemonicParsing="false" onAction="#seSearchOnAction" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="Search">
+                           <font>
+                              <Font name="Gadugi Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField layoutX="24.0" layoutY="20.0" prefHeight="38.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Label layoutX="365.0" layoutY="25.0" text="Search">
                <font>
                   <Font name="Gadugi Bold" size="30.0" />
                </font>

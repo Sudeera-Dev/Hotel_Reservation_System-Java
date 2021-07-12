@@ -61,7 +61,7 @@ public class CheckOutWindowController implements Initializable{
         String myStatement;
 
 
-        myStatement="select * from reservation,customer where reservation.CustomerID=customer.CustomerID  and ReservationID = '"+MainWindowController.reservationID+"'";
+        myStatement="select * from reservation,customer,bill_reservation,bill where Bill_id=BillID and Reservation_id='"+MainWindowController.reservationID+"' and reservation.CustomerID=customer.CustomerID  and ReservationID = '"+MainWindowController.reservationID+"'";
 
 
         try {
@@ -69,6 +69,8 @@ public class CheckOutWindowController implements Initializable{
             ResultSet rs = stmt.executeQuery(myStatement);
 
             while(rs.next()){
+                MainWindowController.billId=rs.getInt("BillID");
+                System.out.println(MainWindowController.billId);
                 rmNo.setText("Room "+rs.getString("RoomNo"));
                 coName.setText(rs.getString("Name"));
                 coAdd.setText(rs.getString("Address"));
