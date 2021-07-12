@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 11, 2021 at 05:00 PM
+-- Generation Time: Jul 12, 2021 at 05:20 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -53,20 +53,21 @@ INSERT INTO `admin` (`AdminID`, `FName`, `LName`, `Email`, `MobileNumber`, `Pass
 
 DROP TABLE IF EXISTS `bill`;
 CREATE TABLE IF NOT EXISTS `bill` (
-  `BillID` varchar(20) NOT NULL,
+  `BillID` int(11) NOT NULL AUTO_INCREMENT,
   `Date` date DEFAULT NULL,
   `Amount` float DEFAULT NULL,
-  `CustomerID` varchar(20) DEFAULT NULL,
+  `CustomerID` int(11) NOT NULL,
   PRIMARY KEY (`BillID`),
   KEY `CustomerID` (`CustomerID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bill`
 --
 
 INSERT INTO `bill` (`BillID`, `Date`, `Amount`, `CustomerID`) VALUES
-('55', '2021-07-09', 4000, '12');
+(1, '2021-07-09', 3000, 1),
+(2, '2021-07-09', 12250, 1);
 
 -- --------------------------------------------------------
 
@@ -76,9 +77,16 @@ INSERT INTO `bill` (`BillID`, `Date`, `Amount`, `CustomerID`) VALUES
 
 DROP TABLE IF EXISTS `bill_event`;
 CREATE TABLE IF NOT EXISTS `bill_event` (
-  `Bill_id` varchar(20) NOT NULL,
-  `Event_id` varchar(20) NOT NULL
+  `Bill_id` int(11) NOT NULL,
+  `Event_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bill_event`
+--
+
+INSERT INTO `bill_event` (`Bill_id`, `Event_id`) VALUES
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -88,8 +96,8 @@ CREATE TABLE IF NOT EXISTS `bill_event` (
 
 DROP TABLE IF EXISTS `bill_reservation`;
 CREATE TABLE IF NOT EXISTS `bill_reservation` (
-  `Bill_id` varchar(20) NOT NULL,
-  `Reservation_id` varchar(20) NOT NULL
+  `Bill_id` int(11) NOT NULL,
+  `Reservation_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -97,9 +105,7 @@ CREATE TABLE IF NOT EXISTS `bill_reservation` (
 --
 
 INSERT INTO `bill_reservation` (`Bill_id`, `Reservation_id`) VALUES
-('1', '1'),
-('2', '2'),
-('55', '5');
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -109,7 +115,7 @@ INSERT INTO `bill_reservation` (`Bill_id`, `Reservation_id`) VALUES
 
 DROP TABLE IF EXISTS `customer`;
 CREATE TABLE IF NOT EXISTS `customer` (
-  `CustomerID` varchar(20) NOT NULL,
+  `CustomerID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) DEFAULT NULL,
   `Address` varchar(50) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
@@ -117,14 +123,14 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `TP` int(10) NOT NULL,
   `NIC` varchar(50) NOT NULL,
   PRIMARY KEY (`CustomerID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
 INSERT INTO `customer` (`CustomerID`, `Name`, `Address`, `Email`, `VehicleNum`, `TP`, `NIC`) VALUES
-('12', 'test', 'test3', 'testing@gmail.com', 'gh-4567', 774248561, '123456789v');
+(1, 'tester', 'tester ge gedara', 'testing@gmail.com', 'gh-4567', 774248561, '123456789v');
 
 -- --------------------------------------------------------
 
@@ -134,24 +140,24 @@ INSERT INTO `customer` (`CustomerID`, `Name`, `Address`, `Email`, `VehicleNum`, 
 
 DROP TABLE IF EXISTS `event`;
 CREATE TABLE IF NOT EXISTS `event` (
-  `EventID` varchar(20) NOT NULL,
+  `EventID` int(11) NOT NULL AUTO_INCREMENT,
   `MenuType` varchar(50) DEFAULT NULL,
   `total` float DEFAULT NULL,
   `Discount` float DEFAULT NULL,
-  `CustomerID` varchar(20) DEFAULT NULL,
+  `CustomerID` int(11) NOT NULL,
   `number_of_plates` int(11) NOT NULL,
   `Time` varchar(4) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`EventID`),
   KEY `CustomerID` (`CustomerID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `event`
 --
 
 INSERT INTO `event` (`EventID`, `MenuType`, `total`, `Discount`, `CustomerID`, `number_of_plates`, `Time`, `date`) VALUES
-('1', 'Package 1', 23456, 355, '5', 200, 'Day', '2021-07-11');
+(1, '1', 12850, 10000, 1, 100, 'Day', '2021-07-14');
 
 -- --------------------------------------------------------
 
@@ -161,11 +167,11 @@ INSERT INTO `event` (`EventID`, `MenuType`, `total`, `Discount`, `CustomerID`, `
 
 DROP TABLE IF EXISTS `ledger`;
 CREATE TABLE IF NOT EXISTS `ledger` (
-  `LedgerID` varchar(20) NOT NULL,
+  `LedgerID` int(11) NOT NULL AUTO_INCREMENT,
   `Description` varchar(50) DEFAULT NULL,
   `Status` varchar(50) DEFAULT NULL,
   `Date` date DEFAULT NULL,
-  `CustomerID` varchar(20) DEFAULT NULL,
+  `CustomerID` int(11) DEFAULT NULL,
   `BillID` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`LedgerID`),
   KEY `CustomerID` (`CustomerID`),
@@ -180,25 +186,25 @@ CREATE TABLE IF NOT EXISTS `ledger` (
 
 DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE IF NOT EXISTS `reservation` (
-  `ReservationID` varchar(20) NOT NULL,
+  `ReservationID` int(11) NOT NULL AUTO_INCREMENT,
   `Type` varchar(50) DEFAULT NULL,
   `RoomNo` int(20) DEFAULT NULL,
   `NumOfGuests` int(20) DEFAULT NULL,
-  `CustomerID` varchar(20) DEFAULT NULL,
+  `CustomerID` int(11) DEFAULT NULL,
   `Check_in_date` date DEFAULT NULL,
   `Check_in_time` time DEFAULT NULL,
   `Check_out_date` date DEFAULT NULL,
   `Check_out_time` time DEFAULT NULL,
   PRIMARY KEY (`ReservationID`),
   KEY `CustomerID` (`CustomerID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reservation`
 --
 
 INSERT INTO `reservation` (`ReservationID`, `Type`, `RoomNo`, `NumOfGuests`, `CustomerID`, `Check_in_date`, `Check_in_time`, `Check_out_date`, `Check_out_time`) VALUES
-('5', 'ac', 7, 4, '12', '2021-07-10', '12:37:37', '2021-07-27', '18:39:57');
+(1, 'nonac', 8, 4, 1, '2021-07-09', '13:23:34', '2021-07-14', '16:23:34');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
