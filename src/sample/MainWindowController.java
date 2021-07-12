@@ -38,14 +38,14 @@ public class MainWindowController implements Initializable {
     @FXML Pane rsPane,rrPane,sPane,repPane;
     @FXML ChoiceBox pkgs,timeSlot;
     @FXML DatePicker ciDate,erDate;
-    @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp,erName,erTp,erAdd,erNop,erId,erDisc;
+    @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp,erName,erTp,erAdd,erNop,erId,erDisc,erPayment;
     @FXML Label ciSelroom,ciDprice,ciResult,erError,noPlates,erTotalVal,erSubTotalVal,erHall;
     @FXML Pane erPanel;
 
     private int ro1=0,ro2=0,ro3=0,ro4=0,ro5=0,ro6=0,ro7=0,ro8=0,ro9=0,ro10=0;
     private int ros1=0,ros2=0,ros3=0,ros4=0,ros5=0,ros6=0,ros7=0,ros8=0,ros9=0,ros10=0;
-    private int pkg=0,plate=0,hall = 10000;;
-    private double subTotal=0,total=0,discount=0;
+    private int pkg=0,plate=0;
+    private double subTotal=0,total=0,discount=0,hall = 10000;
     static int reservationID= 0,process=0;
     static String cuDate,ercDate,ercTime;
 
@@ -625,6 +625,7 @@ public class MainWindowController implements Initializable {
         erSubTotalVal.setText("");
         erTotalVal.setText("");
         erHall.setText("");
+        erPayment.setText("");
     }
 
     public static boolean isNumeric(String strNum) {
@@ -659,11 +660,13 @@ public class MainWindowController implements Initializable {
                     }
                     if(isNumeric(erDisc.getText())) {
                         if (!erDisc.getText().equals("")) {
-                            discount = -Double.parseDouble(erDisc.getText());
+                            discount = Double.parseDouble(erDisc.getText());
+                            System.out.println(discount);
                         }
                     }
+                    System.out.println(discount);
                     subTotal = Double.parseDouble(String.format("%.2f", (double) (Integer.parseInt(erNop.getText()) * plate)));
-                    total = Double.parseDouble(String.format("%.2f", ((subTotal + hall) * 110 / 100) - discount));
+                    total = Double.parseDouble(String.format("%.2f", ((1.1*subTotal) + hall - discount)));
                     erSubTotalVal.setText("Rs. " + subTotal);
                     erTotalVal.setText("Rs. " + total);
 
@@ -681,8 +684,14 @@ public class MainWindowController implements Initializable {
         String nop=erNop.getText();
         String Id=erId.getText();
         String tp=erTp.getText();
+        double payment= 0;
+        if(isNumeric(erPayment.getText())) {
+            if (!erPayment.getText().equals("")) {
+                payment = -Double.parseDouble(erPayment.getText());
+            }
+        }
 
-        EventReservation er = new EventReservation(name,add,nop,Id,tp,discount,total);
+        EventReservation er = new EventReservation(name,add,nop,Id,tp,discount,total,payment);
         erError.setText(er.mainProcess());
 
     }

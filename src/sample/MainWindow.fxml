@@ -414,7 +414,7 @@
                                           <Font name="Gadugi Bold" size="16.0" />
                                        </font>
                                     </Button>
-                                    <TextField layoutX="155.0" layoutY="28.0" prefHeight="38.0" prefWidth="180.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
+                                    <TextField fx:id="erPayment" layoutX="155.0" layoutY="28.0" prefHeight="38.0" prefWidth="180.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font>

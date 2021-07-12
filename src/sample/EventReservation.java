@@ -12,9 +12,9 @@ public class EventReservation {
     Statement stmt;
 
     private String name,add,nop,Id,tp;
-    private double discount,total;
+    private double discount,total,payment;
 
-    EventReservation(String name,String add,String nop,String Id,String tp,double discount,double total){
+    EventReservation(String name,String add,String nop,String Id,String tp,double discount,double total,double payment){
         this.name=name;
         this.add=add;
         this.nop=nop;
@@ -22,6 +22,7 @@ public class EventReservation {
         this.tp=tp;
         this.discount=discount;
         this.total=total;
+        this.payment=payment;
     }
 
     private Connection getConnection() {
@@ -34,7 +35,7 @@ public class EventReservation {
     }
 
     private String validateInputs(){
-        if (name.equals("") || Id.equals("") || add.equals("") || tp.equals("")) {
+        if (name.equals("") || Id.equals("") || add.equals("") || tp.equals("") || payment == 0) {
             return "one or more fields are empty";
         } else {
             if(total != 0){
