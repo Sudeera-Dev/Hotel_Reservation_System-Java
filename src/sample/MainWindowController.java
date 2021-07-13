@@ -779,7 +779,7 @@ public class MainWindowController implements Initializable {
             }
         }
 
-        EventReservation er = new EventReservation(name,add,nop,Id,tp,discount,total,payment);
+        EventReservation er = new EventReservation(name,add,nop,Id,tp,discount,total,payment,pkg);
         erError.setText(er.mainProcess());
 
     }

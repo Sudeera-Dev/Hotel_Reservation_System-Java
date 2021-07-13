@@ -13,8 +13,9 @@ public class EventReservation {
 
     private String name,add,nop,Id,tp;
     private double discount,total,payment;
+    private int pkg;
 
-    EventReservation(String name,String add,String nop,String Id,String tp,double discount,double total,double payment){
+    EventReservation(String name,String add,String nop,String Id,String tp,double discount,double total,double payment,int pkg){
         this.name=name;
         this.add=add;
         this.nop=nop;
@@ -23,6 +24,7 @@ public class EventReservation {
         this.discount=discount;
         this.total=total;
         this.payment=payment;
+        this.pkg=pkg;
     }
 
     private Connection getConnection() {
@@ -59,6 +61,7 @@ public class EventReservation {
     }
 
     private String resreveDate(){
+
         return "success";
     }
 }
