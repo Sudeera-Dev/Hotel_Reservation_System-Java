@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -33,19 +34,54 @@ public class MainWindowController implements Initializable {
 
     ObservableList<String> pkgsList = FXCollections.observableArrayList("Package 1","Package 2","Package 3");
     ObservableList<String> timeSlotList = FXCollections.observableArrayList("Day","Night");
+    ObservableList<String> seTypeList = FXCollections.observableArrayList("Customer","Event","Reservation");
 
     @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck,ciCheckin,erCheck,erClear,erCal,erCheckout;
-    @FXML Pane rsPane,rrPane,sPane,repPane;
-    @FXML ChoiceBox pkgs,timeSlot;
+    @FXML Pane rsPane,rrPane,sPane,repPane,seEv,seCu,seRe;
+    @FXML ChoiceBox pkgs,timeSlot,seType;
     @FXML DatePicker ciDate,erDate;
-    @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp,erName,erTp,erAdd,erNop,erId,erDisc,erPayment;
+    @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp,erName,erTp,erAdd,erNop,erId,erDisc,erPayment,seSearchId;
     @FXML Label ciSelroom,ciDprice,ciResult,erError,noPlates,erTotalVal,erSubTotalVal,erHall;
     @FXML Pane erPanel;
-    @FXML TableView table;
+
+    public TableView<customer> seCuTable;
+    public TableColumn<customer,String> seCuId;
+    public TableColumn<customer,String> seCuName;
+    public TableColumn<customer,String> seCuAdd;
+    public TableColumn<customer,String> seCuEmail;
+    public TableColumn<customer,String> seCuTp;
+    public TableColumn<customer,String> seCuVehino;
+    public TableColumn<customer,String> seCuNic;
+
+    public TableView<Event> seEvTable;
+    public TableColumn<Event,String> seEvID;
+    public TableColumn<Event,String> seEvDate;
+    public TableColumn<Event,String> seEvTime;
+    public TableColumn<Event,String> seEvPkg;
+    public TableColumn<Event,String> seEvcID;
+    public TableColumn<Event,String> seEvcName;
+    public TableColumn<Event,String> seEvTotal;
+    public TableColumn<Event,String> seEvTbp;
+
+    public TableView<Reservation> seReTable;
+    public TableColumn<Reservation,String> seReID;
+    public TableColumn<Reservation,String> seReType;
+    public TableColumn<Reservation,String> seReRm;
+    public TableColumn<Reservation,String> seReNg;
+    public TableColumn<Reservation,String> seRecID;
+    public TableColumn<Reservation,String> seRecName;
+    public TableColumn<Reservation,String> seReciDate;
+    public TableColumn<Reservation,String> seReciTime;
+    public TableColumn<Reservation,String> seRecoDate;
+    public TableColumn<Reservation,String> seRecoTime;
+
+    public ObservableList<Reservation> seReList= FXCollections.observableArrayList();
+    public ObservableList<customer> seCuList= FXCollections.observableArrayList();
+    public ObservableList<Event> seEvList= FXCollections.observableArrayList();
 
     private int ro1=0,ro2=0,ro3=0,ro4=0,ro5=0,ro6=0,ro7=0,ro8=0,ro9=0,ro10=0;
     private int ros1=0,ros2=0,ros3=0,ros4=0,ros5=0,ros6=0,ros7=0,ros8=0,ros9=0,ros10=0;
-    private int pkg=0,plate=0;
+    private int pkg=0,plate=0,sel=0;
     private double subTotal=0,total=0,discount=0,hall = 10000;
     static int reservationID= 0,billId=0,process=0;
     static String cuDate,ercDate,ercTime;
@@ -67,8 +103,42 @@ public class MainWindowController implements Initializable {
         navBtn1.setStyle("-fx-background-color: #a3b5d9");
         pkgs.setItems(pkgsList);
         timeSlot.setItems(timeSlotList);
+        seType.setItems(seTypeList);
         reservedRoom();
         rsPane.toFront();
+
+        seCuId.setCellValueFactory(new PropertyValueFactory<>("seCuId"));
+        seCuName.setCellValueFactory(new PropertyValueFactory<>("seCuName"));
+        seCuAdd.setCellValueFactory(new PropertyValueFactory<>("seCuAdd"));
+        seCuEmail.setCellValueFactory(new PropertyValueFactory<>("seCuEmail"));
+        seCuTp.setCellValueFactory(new PropertyValueFactory<>("seCuTp"));
+        seCuVehino.setCellValueFactory(new PropertyValueFactory<>("seCuVehino"));
+        seCuNic.setCellValueFactory(new PropertyValueFactory<>("seCuNic"));
+        seCuTable.setItems(seCuList);
+
+
+        seEvID.setCellValueFactory(new PropertyValueFactory<>("seEvID"));
+        seEvDate.setCellValueFactory(new PropertyValueFactory<>("seEvDate"));
+        seEvTime.setCellValueFactory(new PropertyValueFactory<>("seEvTime"));
+        seEvPkg.setCellValueFactory(new PropertyValueFactory<>("seEvPkg"));
+        seEvcID.setCellValueFactory(new PropertyValueFactory<>("seEvcID"));
+        seEvcName.setCellValueFactory(new PropertyValueFactory<>("seEvcName"));
+        seEvTotal.setCellValueFactory(new PropertyValueFactory<>("seEvTotal"));
+        seEvTbp.setCellValueFactory(new PropertyValueFactory<>("seEvTbp"));
+        seEvTable.setItems(seEvList);
+
+
+        seReID.setCellValueFactory(new PropertyValueFactory<>("seReID"));
+        seReType.setCellValueFactory(new PropertyValueFactory<>("seReType"));
+        seReRm.setCellValueFactory(new PropertyValueFactory<>("seReRm"));
+        seReNg.setCellValueFactory(new PropertyValueFactory<>("seReNg"));
+        seRecID.setCellValueFactory(new PropertyValueFactory<>("seRecID"));
+        seRecName.setCellValueFactory(new PropertyValueFactory<>("seRecName"));
+        seReciDate.setCellValueFactory(new PropertyValueFactory<>("seReciDate"));
+        seReciTime.setCellValueFactory(new PropertyValueFactory<>("seReciTime"));
+        seRecoDate.setCellValueFactory(new PropertyValueFactory<>("seRecoDate"));
+        seRecoTime.setCellValueFactory(new PropertyValueFactory<>("seRecoTime"));
+        seReTable.setItems(seReList);
 
         pkgs.getSelectionModel().selectedIndexProperty().addListener(
                 (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
@@ -88,6 +158,23 @@ public class MainWindowController implements Initializable {
 
                 });
 
+        seType.getSelectionModel().selectedIndexProperty().addListener(
+                (ObservableValue<? extends Number> ov1, Number old_val1, Number new_val1) -> {
+                    sel=new_val1.intValue();
+                    if(sel == 0){
+                        seCuTable.getItems().clear();
+                        seCu.toFront();
+                    }else if(sel == 1){
+                        seEvTable.getItems().clear();
+                        seEv.toFront();
+                    }else if(sel == 2){
+                        seReTable.getItems().clear();
+                        seRe.toFront();
+                    }else{
+
+                    }
+
+                });
     }
 
     private void roomReserveSetter(String myStatement) throws SQLException {
@@ -698,7 +785,111 @@ public class MainWindowController implements Initializable {
     }
 
     public void seSearchOnAction(ActionEvent event){
+        if(sel== 0){
+            seCuTable.getItems().clear();
+            String myStatement = "Select * from customer";
+            seSearchTab(myStatement);
+        }else if(sel== 1){
+            seEvTable.getItems().clear();
+            String myStatement = "Select * from customer,event,bill_event,bill where Bill_id=bill.BillID and Event_id=event.EventID and bill.CustomerID = customer.CustomerID";
+            seEvSearchTab(myStatement);
+        }else if(sel== 2){
+            seReTable.getItems().clear();
+            String myStatement = "Select * from customer,Reservation where customer.CustomerID = Reservation.CustomerID";
+            seReSearchTab(myStatement);
+        }
 
+    }
+
+    private int searchProcess(String in){
+        String check = seSearchId.getText();
+        System.out.println(in);
+        String[] array = in.split(" ");
+        for(String word : array){
+            String[] array2 = word.split(",");
+            for(String word2 : array2) {
+                if (word2.equals(check)) {
+                    return 1;
+                }
+            }
+        }
+        return 0;
+
+    }
+
+    private void seReSearchTab(String myStatement) {
+
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(myStatement);
+            while (rs.next()) {
+
+                String all = rs.getString("ReservationID") + " " + rs.getString("Type") + " " + rs.getString("RoomNo") + " " + rs.getString("NumOfGuests") + " " + rs.getString("CustomerID") + " " + rs.getString("Name") + " " + rs.getString("Check_in_date") + " " + rs.getString("Check_in_time") + " " + rs.getString("Check_out_date") + " " + rs.getString("Check_out_time");
+                int sp = searchProcess(all);
+                if (sp == 1) {
+                    Reservation ru = new Reservation(rs.getString("ReservationID"), rs.getString("Type"), rs.getString("RoomNo"), rs.getString("NumOfGuests"), rs.getString("CustomerID"), rs.getString("Name"), rs.getString("Check_in_date"), rs.getString("Check_in_time"), rs.getString("Check_out_date"), rs.getString("Check_out_time"));
+                    seReTable.getItems().add(ru);
+                }
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+
+    private void seEvSearchTab(String myStatement) {
+
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(myStatement);
+            while (rs.next()) {
+
+                String all =rs.getString("event.EventID")+" "+ rs.getString("event.date") +" "+rs.getString("customer.Name");
+                int sp = searchProcess(all);
+                if (sp == 1) {
+                    String my="select * from ledger,bill where ledger.BillID=bill.BillID and ledger.BillID='"+rs.getString("bill.BillID")+"'";
+                    float total=0,tbp=0;
+                    try {
+                        stmt = con.createStatement();
+                        ResultSet rs2 = stmt.executeQuery(my);
+                        while (rs2.next()) {
+                            total=total+ rs2.getFloat("paid");
+                        }
+                        tbp=rs.getFloat("Amount")-total;
+
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+
+                    Event ev = new Event(rs.getString("event.EventID"),rs.getString("event.date"),rs.getString("event.time"),rs.getString("event.MenuType"),rs.getString("customer.CustomerID"),rs.getString("customer.Name"),rs.getString("bill.Amount"),String.valueOf(tbp));
+                    seEvTable.getItems().add(ev);
+                }
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+
+    private void seSearchTab(String myStatement){
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(myStatement);
+            while (rs.next()) {
+
+                String all = rs.getString("CustomerID")+" "+rs.getString("Name")+" "+rs.getString("Address")+" "+rs.getString("Email")+" "+rs.getString("VehicleNum")+" "+rs.getString("TP")+" "+rs.getString("NIC");
+                int sp=searchProcess(all);
+                if(sp == 1){
+                    customer cu = new customer(rs.getString("CustomerID"),rs.getString("Name"),rs.getString("Address"),rs.getString("Email"),rs.getString("VehicleNum"),rs.getString("TP"),rs.getString("NIC"));
+                    seCuTable.getItems().add(cu);
+                }
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 
