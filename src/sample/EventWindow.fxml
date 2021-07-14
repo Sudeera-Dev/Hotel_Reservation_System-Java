@@ -100,6 +100,11 @@
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Label>
+            <Button fx:id="reCancel" layoutX="602.0" layoutY="214.0" mnemonicParsing="false" onAction="#reCancelOnAction" prefHeight="37.0" prefWidth="224.0" styleClass="clear_btn" stylesheets="@myStyle.css" text="Cancel the Reservation" textFill="WHITE">
+               <font>
+                  <Font name="Gadugi Bold" size="16.0" />
+               </font>
+            </Button>
          </Pane>
          <Pane layoutX="69.0" layoutY="468.0" prefHeight="137.0" prefWidth="808.0" style="-fx-background-color: #281717; -fx-background-radius: 30;">
             <Label layoutX="81.0" layoutY="14.0" text="Total   :" textFill="WHITE">
