@@ -46,6 +46,7 @@ public class EventWindowController  implements Initializable {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(myStatement);
             while (rs.next()) {
+                MainWindowController.billId=rs.getInt("Bill_id");
                 evTitle.setText(rs.getString("event.date")+" / "+rs.getString("event.Time"));
                 evName.setText(rs.getString("Name"));
                 evId.setText(rs.getString("NIC"));
@@ -97,6 +98,7 @@ public class EventWindowController  implements Initializable {
         stage.setScene(new Scene(root3));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
     }
 
 }

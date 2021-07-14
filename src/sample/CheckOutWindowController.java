@@ -162,6 +162,7 @@ public class CheckOutWindowController implements Initializable{
         stage.setScene(new Scene(root3));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
 
     }
 

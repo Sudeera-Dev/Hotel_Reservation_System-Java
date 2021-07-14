@@ -36,7 +36,7 @@ public class MainWindowController implements Initializable {
     ObservableList<String> timeSlotList = FXCollections.observableArrayList("Day","Night");
     ObservableList<String> seTypeList = FXCollections.observableArrayList("Customer","Event","Reservation");
 
-    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck,ciCheckin,erCheck,erClear,erCal,erCheckout;
+    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck,ciCheckin,erCheck,erClear,erCal,erCheckout,reRefresh;
     @FXML Pane rsPane,rrPane,sPane,repPane,seEv,seCu,seRe;
     @FXML ChoiceBox pkgs,timeSlot,seType;
     @FXML DatePicker ciDate,erDate;
@@ -892,6 +892,13 @@ public class MainWindowController implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+    }
+
+
+    public void reRefreshOnAction(ActionEvent event){
+        resetButtons();
+        reservedRoom();
 
     }
 

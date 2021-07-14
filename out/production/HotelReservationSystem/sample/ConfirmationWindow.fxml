@@ -14,7 +14,7 @@
                   <Font name="Gadugi Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="conYes" layoutX="154.0" layoutY="88.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="99.0" stylesheets="@myStyle.css" text="Yes" textFill="WHITE">
+            <Button fx:id="conYes" layoutX="154.0" layoutY="88.0" mnemonicParsing="false" onAction="#conYesonAction" prefHeight="62.0" prefWidth="99.0" stylesheets="@myStyle.css" text="Yes" textFill="WHITE">
                <font>
                   <Font name="Gadugi Bold" size="16.0" />
                </font>

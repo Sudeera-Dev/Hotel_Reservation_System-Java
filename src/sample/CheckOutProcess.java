@@ -85,15 +85,13 @@ public class CheckOutProcess {
         String query = "update reservation set Check_out_date = '"+coDate+"', Check_out_time = '"+coTime+"' where ReservationID='"+Rid+"'";
         try {
             PreparedStatement pstn = con.prepareStatement(query);
-//            pstn.setDate(1, Date.valueOf(coDate));
-//            pstn.setTime(2, Time.valueOf(coTime));
             pstn.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
         int Bill = MainWindowController.billId;
-        String queryy = "update bill set Amount ='"+total+"' ";
+        String queryy = "update bill set Amount ='"+total+"' where BillID='"+Bill+"'";
 
         try {
             PreparedStatement pstn = con.prepareStatement(queryy);
