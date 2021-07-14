@@ -35,13 +35,16 @@ public class MainWindowController implements Initializable {
     ObservableList<String> pkgsList = FXCollections.observableArrayList("Package 1","Package 2","Package 3");
     ObservableList<String> timeSlotList = FXCollections.observableArrayList("Day","Night");
     ObservableList<String> seTypeList = FXCollections.observableArrayList("Customer","Event","Reservation");
+    ObservableList<String> repMonthList = FXCollections.observableArrayList("All","January","February","March","April","May","June","July","August","September","October","November","December");
+    ObservableList<String> repTypeList = FXCollections.observableArrayList("All","Event Reservation","Room Reservation");
 
-    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck,ciCheckin,erCheck,erClear,erCal,erCheckout,reRefresh;
+
+    @FXML Button navBtn1,navBtn2,navBtn3,navBtn4,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ciCheck,ciCheckin,erCheck,erClear,erCal,erCheckout,reRefresh,repView;
     @FXML Pane rsPane,rrPane,sPane,repPane,seEv,seCu,seRe;
-    @FXML ChoiceBox pkgs,timeSlot,seType;
+    @FXML ChoiceBox pkgs,timeSlot,seType,repMonth,repType;
     @FXML DatePicker ciDate,erDate;
-    @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp,erName,erTp,erAdd,erNop,erId,erDisc,erPayment,seSearchId,ciNoguest;
-    @FXML Label ciSelroom,ciDprice,ciResult,erError,noPlates,erTotalVal,erSubTotalVal,erHall;
+    @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp,erName,erTp,erAdd,erNop,erId,erDisc,erPayment,seSearchId,ciNoguest,repYear;
+    @FXML Label ciSelroom,ciDprice,ciResult,erError,noPlates,erTotalVal,erSubTotalVal,erHall,repTI;
     @FXML Pane erPanel;
 
     public TableView<customer> seCuTable;
@@ -75,9 +78,18 @@ public class MainWindowController implements Initializable {
     public TableColumn<Reservation,String> seRecoDate;
     public TableColumn<Reservation,String> seRecoTime;
 
+    public TableView<Ledger> repTable;
+    public TableColumn<Ledger,String> repID;
+    public TableColumn<Ledger,String> repDesc;
+    public TableColumn<Ledger,String> repCuID;
+    public TableColumn<Ledger,String> repCuName;
+    public TableColumn<Ledger,String> repDate;
+    public TableColumn<Ledger,String> repPaid;
+
     public ObservableList<Reservation> seReList= FXCollections.observableArrayList();
     public ObservableList<customer> seCuList= FXCollections.observableArrayList();
     public ObservableList<Event> seEvList= FXCollections.observableArrayList();
+    public ObservableList<Ledger> repList= FXCollections.observableArrayList();
 
     private int ro1=0,ro2=0,ro3=0,ro4=0,ro5=0,ro6=0,ro7=0,ro8=0,ro9=0,ro10=0;
     private int ros1=0,ros2=0,ros3=0,ros4=0,ros5=0,ros6=0,ros7=0,ros8=0,ros9=0,ros10=0;
@@ -104,8 +116,18 @@ public class MainWindowController implements Initializable {
         pkgs.setItems(pkgsList);
         timeSlot.setItems(timeSlotList);
         seType.setItems(seTypeList);
+        repMonth.setItems(repMonthList);
+        repType.setItems(repTypeList);
         reservedRoom();
         rsPane.toFront();
+
+        repID.setCellValueFactory(new PropertyValueFactory<>("repID"));
+        repDesc.setCellValueFactory(new PropertyValueFactory<>("repDesc"));
+        repCuID.setCellValueFactory(new PropertyValueFactory<>("repCuID"));
+        repCuName.setCellValueFactory(new PropertyValueFactory<>("repCuName"));
+        repDate.setCellValueFactory(new PropertyValueFactory<>("repDate"));
+        repPaid.setCellValueFactory(new PropertyValueFactory<>("repPaid"));
+        repTable.setItems(repList);
 
         seCuId.setCellValueFactory(new PropertyValueFactory<>("seCuId"));
         seCuName.setCellValueFactory(new PropertyValueFactory<>("seCuName"));
@@ -116,7 +138,6 @@ public class MainWindowController implements Initializable {
         seCuNic.setCellValueFactory(new PropertyValueFactory<>("seCuNic"));
         seCuTable.setItems(seCuList);
 
-
         seEvID.setCellValueFactory(new PropertyValueFactory<>("seEvID"));
         seEvDate.setCellValueFactory(new PropertyValueFactory<>("seEvDate"));
         seEvTime.setCellValueFactory(new PropertyValueFactory<>("seEvTime"));
@@ -126,7 +147,6 @@ public class MainWindowController implements Initializable {
         seEvTotal.setCellValueFactory(new PropertyValueFactory<>("seEvTotal"));
         seEvTbp.setCellValueFactory(new PropertyValueFactory<>("seEvTbp"));
         seEvTable.setItems(seEvList);
-
 
         seReID.setCellValueFactory(new PropertyValueFactory<>("seReID"));
         seReType.setCellValueFactory(new PropertyValueFactory<>("seReType"));
@@ -309,6 +329,9 @@ public class MainWindowController implements Initializable {
         navBtn1.setStyle("-fx-background-color: #0c447b");
         navBtn3.setStyle("-fx-background-color: #0c447b");
         repPane.toFront();
+        repTable.getItems().clear();
+        String myStatement = "Select * from ledger,bill,customer where ledger.BillID=bill.BillID and bill.CustomerID = customer.CustomerID";
+        setRepTable(myStatement);
 
     }
 
@@ -899,6 +922,92 @@ public class MainWindowController implements Initializable {
     public void reRefreshOnAction(ActionEvent event){
         resetButtons();
         reservedRoom();
+
+    }
+
+    public void repViewOnAction(ActionEvent event){
+        String year=repYear.getText();
+        if(year.length() == 4){
+            repTable.getItems().clear();
+            String month = setMonth();
+            String type = setRepType();
+            String myStatement = "Select * from ledger,bill,customer where ledger.BillID=bill.BillID and bill.CustomerID = customer.CustomerID" + month + type;
+            System.out.println(myStatement);
+            setRepTable(myStatement);
+
+        }
+    }
+
+    private String setRepType(){
+
+        String type = repType.getValue().toString();
+        if(type.equals("All")){
+            return "";
+
+        }else if(type.equals("Event Reservation")){
+            return " and Description like 'Event Reservation' " ;
+
+        }else if(type.equals("Room Reservation")){
+           return  " and Description like 'Room Reservation' ";
+        }else{
+           return "";
+        }
+
+    }
+
+
+
+    private String setMonth(){
+        String month = repMonth.getValue().toString();
+        String year = repYear.getText();
+
+        if(month.equals("All")){
+            return " and ledger.Date >= '"+year+"/01/01' and ledger.Date <= '"+year+"/12/31'";
+        }else if(month.equals("January")){
+            return " and ledger.Date >= '"+year+"/01/01' and ledger.Date <= '"+year+"/01/31'";
+        }else if(month.equals("February")){
+            return " and ledger.Date >= '"+year+"/02/01' and ledger.Date <= '"+year+"/02/31'";
+        }else if(month.equals("March")){
+            return " and ledger.Date >= '"+year+"/03/01' and ledger.Date <= '"+year+"/03/31'";
+        }else if(month.equals("April")){
+            return " and ledger.Date >= '"+year+"/04/01' and ledger.Date <= '"+year+"/04/31'";
+        }else if(month.equals("May")){
+            return " and ledger.Date >= '"+year+"/05/01' and ledger.Date <= '"+year+"/05/31'";
+        }else if(month.equals("June")){
+            return " and ledger.Date >= '"+year+"/06/01' and ledger.Date <= '"+year+"/06/31'";
+        }else if(month.equals("July")){
+            return " and ledger.Date >= '"+year+"/07/01' and ledger.Date <= '"+year+"/07/31'";
+        }else if(month.equals("August")){
+            return " and ledger.Date >= '"+year+"/08/01' and ledger.Date <= '"+year+"/08/31'";
+        }else if(month.equals("September")){
+            return " and ledger.Date >= '"+year+"/09/01' and ledger.Date <= '"+year+"/09/31'";
+        }else if(month.equals("October")){
+            return " and ledger.Date >= '"+year+"/10/01' and ledger.Date <= '"+year+"/10/31'";
+        }else if(month.equals("November")){
+            return " and ledger.Date >= '"+year+"/11/01' and ledger.Date <= '"+year+"/11/31'";
+        }else if(month.equals("December")){
+            return " and ledger.Date >= '"+year+"/12/01' and ledger.Date <= '"+year+"/12/31'";
+        }else{
+            return "";
+        }
+
+
+    }
+
+    private void setRepTable(String myStatement){
+        float total=0;
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(myStatement);
+            while (rs.next()) {
+                Ledger ll=new Ledger(rs.getString("LedgerID"),rs.getString("Description"),rs.getString("customer.CustomerID"),rs.getString("Name"),rs.getString("ledger.Date"),rs.getString("paid"));
+                repTable.getItems().add(ll);
+                total += Float.parseFloat(rs.getString("paid"));
+            }
+            repTI.setText(String.valueOf(total));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 

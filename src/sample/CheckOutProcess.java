@@ -114,7 +114,7 @@ public class CheckOutProcess {
 
 
 
-        String queryinsret = "insert into ledger (Description,paid,Date,CustomerID,BillID) values ('Reservation','"+total+"','"+coDate+"','"+CusName+"','"+Bill+"')";
+        String queryinsret = "insert into ledger (Description,paid,Date,CustomerID,BillID) values ('Room Reservation','"+total+"','"+coDate+"','"+CusName+"','"+Bill+"')";
         try {
             PreparedStatement pstn = con.prepareStatement(queryinsret);
 
