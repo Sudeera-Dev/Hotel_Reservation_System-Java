@@ -25,10 +25,11 @@ public class CheckOutWindowController implements Initializable{
     Connection con = getConnection();
     Statement stmt;
 
-    @FXML Label rmNo,coName,coAdd,coTime,coId,coVehino,coSelroom,coTp,ciTotal,coRes;
+    @FXML Label rmNo,coName,coAdd,coTime,coId,coVehino,coSelroom,coTp,ciTotal,coRes,ciTotal1,coTime1;
     @FXML TextField cooTime;
     @FXML DatePicker cooDate;
     @FXML Button coCal,ciCancel,coPay;
+    @FXML Pane rmReservePanel,coPan1,coPan2;
 
     DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
@@ -42,14 +43,43 @@ public class CheckOutWindowController implements Initializable{
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        coPan2.setVisible(false);
+        coPan1.setVisible(true);
         loadDetails();
+        checkProcess();
         conTime = cooTime.getText();
         conDate = date.format(cooDate.getValue());
         CheckOutProcess co = new CheckOutProcess(conDate,conTime);
         ciTotal.setText(co.mainProcess());
 
+
     }
 
+    private void checkProcess(){
+        String myStatement="select * from reservation,customer,bill_reservation,bill where Bill_id=BillID and Reservation_id='"+MainWindowController.reservationID+"' and reservation.CustomerID=customer.CustomerID  and ReservationID = '"+MainWindowController.reservationID+"'";
+
+
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(myStatement);
+
+            while(rs.next()){
+                if(!(rs.getString("Check_out_date").equals(null))) {
+                    rmReservePanel.toFront();
+                    ciTotal1.setText(rs.getString("Amount"));
+                    coTime1.setText(rs.getString("Check_out_date"));
+                    coPan2.setVisible(true);
+                    coPan1.setVisible(false);
+                }
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        System.out.println(myStatement);
+
+    }
 
     private void loadDetails(){
         conTime=time.format(now);
