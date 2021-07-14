@@ -45,8 +45,9 @@ public class CheckOutWindowController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         coPan2.setVisible(false);
         coPan1.setVisible(true);
+        rmReservePanel.toBack();
         loadDetails();
-        checkProcess();
+        //checkProcess();
         conTime = cooTime.getText();
         conDate = date.format(cooDate.getValue());
         CheckOutProcess co = new CheckOutProcess(conDate,conTime);
@@ -64,7 +65,9 @@ public class CheckOutWindowController implements Initializable{
             ResultSet rs = stmt.executeQuery(myStatement);
 
             while(rs.next()){
-                if(!(rs.getString("Check_out_date").equals(null))) {
+                String cod=rs.getString("Check_out_date");
+                System.out.println(cod);
+                if(!(cod.equals(null))) {
                     rmReservePanel.toFront();
                     ciTotal1.setText(rs.getString("Amount"));
                     coTime1.setText(rs.getString("Check_out_date"));
