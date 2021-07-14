@@ -40,7 +40,7 @@ public class MainWindowController implements Initializable {
     @FXML Pane rsPane,rrPane,sPane,repPane,seEv,seCu,seRe;
     @FXML ChoiceBox pkgs,timeSlot,seType;
     @FXML DatePicker ciDate,erDate;
-    @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp,erName,erTp,erAdd,erNop,erId,erDisc,erPayment,seSearchId;
+    @FXML TextField ciTime,ciName,ciId,ciAdd,ciVehino,ciTp,erName,erTp,erAdd,erNop,erId,erDisc,erPayment,seSearchId,ciNoguest;
     @FXML Label ciSelroom,ciDprice,ciResult,erError,noPlates,erTotalVal,erSubTotalVal,erHall;
     @FXML Pane erPanel;
 
@@ -271,6 +271,7 @@ public class MainWindowController implements Initializable {
         ciResult.setText("");
         reservedRoom();
         ciDprice.setText("");
+        ciNoguest.setText("");
 
     }
 
@@ -319,6 +320,7 @@ public class MainWindowController implements Initializable {
         String add=ciAdd.getText();
         String vehino=ciVehino.getText();
         String tp=ciTp.getText();
+        int nog = Integer.parseInt(ciNoguest.getText());
 
         CheckinProcess cp = new CheckinProcess(name,id,add,vehino,tp,neTime,nDate,room,cuDate);
         ciResult.setText(cp.mainProcess());
