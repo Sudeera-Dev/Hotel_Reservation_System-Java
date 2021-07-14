@@ -47,7 +47,7 @@ public class CheckOutWindowController implements Initializable{
         coPan1.setVisible(true);
         rmReservePanel.toBack();
         loadDetails();
-        //checkProcess();
+        checkProcess();
         conTime = cooTime.getText();
         conDate = date.format(cooDate.getValue());
         CheckOutProcess co = new CheckOutProcess(conDate,conTime);
@@ -65,9 +65,13 @@ public class CheckOutWindowController implements Initializable{
             ResultSet rs = stmt.executeQuery(myStatement);
 
             while(rs.next()){
+                int i=0;
                 String cod=rs.getString("Check_out_date");
-                System.out.println(cod);
-                if(!(cod.equals(null))) {
+                if (!(cod == null)){
+                    i=1;
+                }
+                System.out.println(i);
+                if(i == 1) {
                     rmReservePanel.toFront();
                     ciTotal1.setText(rs.getString("Amount"));
                     coTime1.setText(rs.getString("Check_out_date"));
