@@ -542,7 +542,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="ciCheck" layoutX="459.0" layoutY="214.0" mnemonicParsing="false" onAction="#ciCheckOnAction" prefHeight="38.0" prefWidth="71.0" style="-fx-background-radius: 30 px;" styleClass="nav_btn" stylesheets="@myStyle.css" text="Check" textFill="WHITE" />
+                  <Button fx:id="ciCheck" layoutX="459.0" layoutY="214.0" mnemonicParsing="false" onAction="#ciCheckOnAction" prefHeight="38.0" prefWidth="71.0" styleClass="nav_btn" stylesheets="@myStyle.css" text="Check" textFill="WHITE" />
                   <Label fx:id="ciResult" alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="503.0" prefHeight="27.0" prefWidth="685.0" textAlignment="CENTER" textFill="RED">
                      <font>
                         <Font name="Gadugi Bold" size="18.0" />

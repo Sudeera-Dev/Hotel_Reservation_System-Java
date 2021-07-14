@@ -178,6 +178,7 @@ public class MainWindowController implements Initializable {
     }
 
     private void roomReserveSetter(String myStatement) throws SQLException {
+        resetButtons();
         stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(myStatement);
         while (rs.next()) {
@@ -238,7 +239,7 @@ public class MainWindowController implements Initializable {
     private void reservedRoom() {
 
         String myStatement;
-        myStatement="select * from reservation where  Check_out_date >= \""+date.format(now)+"\" or Check_out_date is NULL";
+        myStatement="select * from reservation where Check_in_date <= '"+date.format(now)+"' and  Check_out_date >= '"+date.format(now)+"' or Check_out_date is NULL";
 
         neTime=time.format(now);
         nDate=date.format(now);
@@ -357,13 +358,12 @@ public class MainWindowController implements Initializable {
         String nTime = ciTime.getText();
 
         if(nTime.length() == 5){
-            resetButtons();
             neTime = nTime;
             nDate = date.format(ciDate.getValue());
 
             String myStatement;
 
-            myStatement="select * from reservation where Check_out_date >= \""+nDate+"\" or Check_out_date is NULL";
+            myStatement="select * from reservation where Check_in_date <= '"+nDate+"' and Check_out_date >= '"+nDate+"' or Check_out_date is NULL";
 
 
             try {
@@ -378,43 +378,43 @@ public class MainWindowController implements Initializable {
     }
 
     private void resetButtons(){
-        if(ro1 != 3){
+        if(ro1 == 3){
             r1.setStyle("-fx-background-color: green");
             ro1=0;
         }
-        if(ro2 != 3){
+        if(ro2 == 3){
             r2.setStyle("-fx-background-color: green");
             ro2=0;
         }
-        if(ro3 != 3){
+        if(ro3 == 3){
             r3.setStyle("-fx-background-color: green");
             ro3=0;
         }
-        if(ro4 != 3){
+        if(ro4 == 3){
             r4.setStyle("-fx-background-color: green");
             ro4=0;
         }
-        if(ro5 != 3){
+        if(ro5 == 3){
             r5.setStyle("-fx-background-color: green");
             ro5=0;
         }
-        if(ro6 != 3){
+        if(ro6 == 3){
             r6.setStyle("-fx-background-color: green");
             ro7=0;
         }
-        if(ro8 != 3){
+        if(ro8 == 3){
             r8.setStyle("-fx-background-color: green");
             ro8=0;
         }
-        if(ro9 != 3){
+        if(ro9 == 3){
             r9.setStyle("-fx-background-color: green");
             ro9=0;
         }
-        if(ro10 != 3){
+        if(ro10 == 3){
             r10.setStyle("-fx-background-color: green");
             ro10=0;
         }
-        if(ro7 != 3){
+        if(ro7 == 3){
             r7.setStyle("-fx-background-color: green");
             ro7=0;
         }
