@@ -106,7 +106,7 @@
                </font>
             </Button>
          </Pane>
-         <Pane layoutX="69.0" layoutY="468.0" prefHeight="137.0" prefWidth="808.0" style="-fx-background-color: #281717; -fx-background-radius: 30;">
+         <Pane fx:id="notPaidPanel" layoutX="69.0" layoutY="468.0" prefHeight="137.0" prefWidth="808.0" style="-fx-background-color: #281717; -fx-background-radius: 30;">
             <Label layoutX="81.0" layoutY="14.0" text="Total   :" textFill="WHITE">
                <font>
                   <Font name="Gadugi Bold" size="24.0" />
@@ -159,6 +159,20 @@
                   <Font name="Gadugi Bold" size="24.0" />
                </font>
             </Label>
+         </Pane>
+         <Pane fx:id="totPaidPanel" layoutX="69.0" layoutY="468.0" prefHeight="137.0" prefWidth="808.0" style="-fx-background-color: #281717; -fx-background-radius: 30;">
+            <children>
+               <Label layoutX="83.0" layoutY="42.0" text="Total   :" textFill="WHITE">
+                  <font>
+                     <Font name="Gadugi Bold" size="36.0" />
+                  </font>
+               </Label>
+               <Label fx:id="evTotal1" layoutX="241.0" layoutY="42.0" text="Rs. 12,000.00" textFill="WHITE">
+                  <font>
+                     <Font name="Gadugi Bold" size="36.0" />
+                  </font>
+               </Label>
+            </children>
          </Pane>
       </Pane>
    </Pane>

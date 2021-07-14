@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -25,9 +26,10 @@ public class EventWindowController  implements Initializable {
     Connection con = getConnection();
     Statement stmt;
 
-    @FXML Label evName,evId,evAdd,evTp,evPkg,evNop,evTitle,evTotal,evPaid,evTbp;
+    @FXML Label evName,evId,evAdd,evTp,evPkg,evNop,evTitle,evTotal,evPaid,evTbp,evTotal1;
     @FXML TextField evPay;
     @FXML Button evClear,evCheck;
+    @FXML Pane totPaidPanel,notPaidPanel;
 
     private Connection getConnection() {
         Connection myConn = mdc.getMyConnection();
@@ -37,6 +39,7 @@ public class EventWindowController  implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        notPaidPanel.toFront();
         getDetails();
     }
 
@@ -73,6 +76,10 @@ public class EventWindowController  implements Initializable {
                         total=total+ rs2.getFloat("paid");
                     }
                     tbp=rs.getFloat("Amount")-total;
+                    if(total >= rs.getFloat("Amount")){
+                        totPaidPanel.toFront();
+                        evTotal1.setText(rs.getString("Amount"));
+                    }
 
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
@@ -80,6 +87,9 @@ public class EventWindowController  implements Initializable {
                 evPaid.setText(String.valueOf(total));
                 evTbp.setText(String.valueOf(tbp));
                 evPay.setText(String.valueOf(tbp));
+
+
+
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
