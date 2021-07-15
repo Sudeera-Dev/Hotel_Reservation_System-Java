@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 12, 2021 at 05:20 PM
+-- Generation Time: Jul 15, 2021 at 09:25 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -59,15 +59,7 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `CustomerID` int(11) NOT NULL,
   PRIMARY KEY (`BillID`),
   KEY `CustomerID` (`CustomerID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `bill`
---
-
-INSERT INTO `bill` (`BillID`, `Date`, `Amount`, `CustomerID`) VALUES
-(1, '2021-07-09', 3000, 1),
-(2, '2021-07-09', 12250, 1);
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -81,13 +73,6 @@ CREATE TABLE IF NOT EXISTS `bill_event` (
   `Event_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `bill_event`
---
-
-INSERT INTO `bill_event` (`Bill_id`, `Event_id`) VALUES
-(2, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -100,13 +85,6 @@ CREATE TABLE IF NOT EXISTS `bill_reservation` (
   `Reservation_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `bill_reservation`
---
-
-INSERT INTO `bill_reservation` (`Bill_id`, `Reservation_id`) VALUES
-(1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -118,19 +96,11 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `CustomerID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) DEFAULT NULL,
   `Address` varchar(50) DEFAULT NULL,
-  `Email` varchar(50) DEFAULT NULL,
   `VehicleNum` varchar(50) NOT NULL,
   `TP` int(10) NOT NULL,
   `NIC` varchar(50) NOT NULL,
   PRIMARY KEY (`CustomerID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`CustomerID`, `Name`, `Address`, `Email`, `VehicleNum`, `TP`, `NIC`) VALUES
-(1, 'tester', 'tester ge gedara', 'testing@gmail.com', 'gh-4567', 774248561, '123456789v');
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -146,18 +116,11 @@ CREATE TABLE IF NOT EXISTS `event` (
   `Discount` float DEFAULT NULL,
   `CustomerID` int(11) NOT NULL,
   `number_of_plates` int(11) NOT NULL,
-  `Time` varchar(4) NOT NULL,
+  `Time` varchar(5) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`EventID`),
   KEY `CustomerID` (`CustomerID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `event`
---
-
-INSERT INTO `event` (`EventID`, `MenuType`, `total`, `Discount`, `CustomerID`, `number_of_plates`, `Time`, `date`) VALUES
-(1, '1', 12850, 10000, 1, 100, 'Day', '2021-07-14');
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -169,14 +132,14 @@ DROP TABLE IF EXISTS `ledger`;
 CREATE TABLE IF NOT EXISTS `ledger` (
   `LedgerID` int(11) NOT NULL AUTO_INCREMENT,
   `Description` varchar(50) DEFAULT NULL,
-  `Status` varchar(50) DEFAULT NULL,
+  `paid` double DEFAULT NULL,
   `Date` date DEFAULT NULL,
   `CustomerID` int(11) DEFAULT NULL,
   `BillID` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`LedgerID`),
   KEY `CustomerID` (`CustomerID`),
   KEY `BillID` (`BillID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -197,14 +160,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `Check_out_time` time DEFAULT NULL,
   PRIMARY KEY (`ReservationID`),
   KEY `CustomerID` (`CustomerID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `reservation`
---
-
-INSERT INTO `reservation` (`ReservationID`, `Type`, `RoomNo`, `NumOfGuests`, `CustomerID`, `Check_in_date`, `Check_in_time`, `Check_out_date`, `Check_out_time`) VALUES
-(1, 'nonac', 8, 4, 1, '2021-07-09', '13:23:34', '2021-07-14', '16:23:34');
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
