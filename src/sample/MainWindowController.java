@@ -53,7 +53,6 @@ public class MainWindowController implements Initializable {
     public TableColumn<customer,String> seCuId;
     public TableColumn<customer,String> seCuName;
     public TableColumn<customer,String> seCuAdd;
-    public TableColumn<customer,String> seCuEmail;
     public TableColumn<customer,String> seCuTp;
     public TableColumn<customer,String> seCuVehino;
     public TableColumn<customer,String> seCuNic;
@@ -134,7 +133,6 @@ public class MainWindowController implements Initializable {
         seCuId.setCellValueFactory(new PropertyValueFactory<>("seCuId"));
         seCuName.setCellValueFactory(new PropertyValueFactory<>("seCuName"));
         seCuAdd.setCellValueFactory(new PropertyValueFactory<>("seCuAdd"));
-        seCuEmail.setCellValueFactory(new PropertyValueFactory<>("seCuEmail"));
         seCuTp.setCellValueFactory(new PropertyValueFactory<>("seCuTp"));
         seCuVehino.setCellValueFactory(new PropertyValueFactory<>("seCuVehino"));
         seCuNic.setCellValueFactory(new PropertyValueFactory<>("seCuNic"));
@@ -950,10 +948,10 @@ public class MainWindowController implements Initializable {
             ResultSet rs = stmt.executeQuery(myStatement);
             while (rs.next()) {
 
-                String all = rs.getString("CustomerID")+" "+rs.getString("Name")+" "+rs.getString("Address")+" "+rs.getString("Email")+" "+rs.getString("VehicleNum")+" "+rs.getString("TP")+" "+rs.getString("NIC");
+                String all = rs.getString("CustomerID")+" "+rs.getString("Name")+" "+rs.getString("Address")+" "+" "+rs.getString("VehicleNum")+" "+rs.getString("TP")+" "+rs.getString("NIC");
                 int sp=searchProcess(all);
                 if(sp == 1){
-                    customer cu = new customer(rs.getString("CustomerID"),rs.getString("Name"),rs.getString("Address"),rs.getString("Email"),rs.getString("VehicleNum"),rs.getString("TP"),rs.getString("NIC"));
+                    customer cu = new customer(rs.getString("CustomerID"),rs.getString("Name"),rs.getString("Address"),rs.getString("VehicleNum"),rs.getString("TP"),rs.getString("NIC"));
                     seCuTable.getItems().add(cu);
                 }
 

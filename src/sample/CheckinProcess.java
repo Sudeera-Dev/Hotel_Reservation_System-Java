@@ -87,6 +87,9 @@ public class CheckinProcess {
                 ResultSet rs2 = stmt.executeQuery(myStatement);
                 while (rs2.next()) {
                     cuid=rs2.getInt("id");
+                    myStatement="update customer set VehicleNum='"+vehino+"',TP='"+tp+"' where CustomerID='"+cuid+"'";
+                    PreparedStatement pstn = con.prepareStatement(myStatement);
+                    pstn.executeUpdate();
                 }
 
             }

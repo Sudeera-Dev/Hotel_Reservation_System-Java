@@ -6,16 +6,14 @@ public class customer {
     private SimpleStringProperty seCuId;
     private SimpleStringProperty seCuName;
     private SimpleStringProperty seCuAdd;
-    private SimpleStringProperty seCuEmail;
     private SimpleStringProperty seCuTp;
     private SimpleStringProperty seCuVehino;
     private SimpleStringProperty seCuNic;
 
-    customer(String cuID,String seCuName,String seCuAdd,String seCuEmail,String seCuTp,String seCuVehino,String seCuNic){
+    customer(String cuID,String seCuName,String seCuAdd,String seCuTp,String seCuVehino,String seCuNic){
         this.seCuId= new SimpleStringProperty(cuID);
         this.seCuName= new SimpleStringProperty(seCuName);
         this.seCuAdd= new SimpleStringProperty(seCuAdd);
-        this.seCuEmail= new SimpleStringProperty(seCuEmail);
         this.seCuTp= new SimpleStringProperty(seCuTp);
         this.seCuVehino= new SimpleStringProperty(seCuVehino);
         this.seCuNic= new SimpleStringProperty(seCuNic);
@@ -23,10 +21,6 @@ public class customer {
 
     public String getSeCuAdd() {
         return seCuAdd.get();
-    }
-
-    public String getSeCuEmail() {
-        return seCuEmail.get();
     }
 
     public String getSeCuId() {
