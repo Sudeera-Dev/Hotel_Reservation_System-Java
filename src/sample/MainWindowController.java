@@ -96,7 +96,7 @@ public class MainWindowController implements Initializable {
     private int ros1=0,ros2=0,ros3=0,ros4=0,ros5=0,ros6=0,ros7=0,ros8=0,ros9=0,ros10=0;
     private int pkg=0,plate=0,sel=0;
     private double subTotal=0,total=0,discount=0,hall = 10000;
-    static int reservationID= 0,billId=0,process=0,eventID=0;
+    static int reservationID= 0,billId=0,process=0,eventID=0,cId=0;
     static String cuDate,ercDate,ercTime;
 
     DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -746,6 +746,7 @@ public class MainWindowController implements Initializable {
             while (rs.next()) {
                 count++;
                 eventID = rs.getInt("EventID");
+                cId = rs.getInt("CustomerID");
             }
 
             if(count == 0){
