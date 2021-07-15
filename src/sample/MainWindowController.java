@@ -209,6 +209,7 @@ public class MainWindowController implements Initializable {
 
             } else if (rs.getInt("RoomNo") == 2) {
                 ro2 = 3;
+                r2.setStyle("-fx-background-color: red");
                 ros2 = rs.getInt("ReservationID");
 
             } else if (rs.getInt("RoomNo") == 3) {
@@ -825,8 +826,8 @@ public class MainWindowController implements Initializable {
                     System.out.println(discount);
                     subTotal = Double.parseDouble(String.format("%.2f", (double) (Integer.parseInt(erNop.getText()) * plate)));
                     total = Double.parseDouble(String.format("%.2f", ((1.1*subTotal) + hall - discount)));
-                    erSubTotalVal.setText("Rs. " + subTotal);
-                    erTotalVal.setText("Rs. " + total);
+                    erSubTotalVal.setText("Rs. " + decimalFormat.format(subTotal));
+                    erTotalVal.setText("Rs. " + decimalFormat.format(total));
 
             }else{
                     erError.setText("invalid input");

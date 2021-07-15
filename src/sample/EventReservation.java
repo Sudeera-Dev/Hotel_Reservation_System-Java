@@ -104,23 +104,11 @@ public class EventReservation {
             }
 
 
-            myStatement="INSERT INTO Customer ( Name,Address,TP,NIC) VALUES('"+name+"','"+add+"','"+tp+"','"+Id+"')";
-            stmt = con.createStatement();
-            PreparedStatement psn = con.prepareStatement(myStatement);
-            psn.execute();
-
-                myStatement="select MAX(CustomerID) AS id from customer";
-                stmt = con.createStatement();
-                ResultSet rs3 = stmt.executeQuery(myStatement);
-                while (rs3.next()) {
-                    cuid=rs3.getInt("id");
-                }
-
             String date = MainWindowController.ercDate;
             String daynight = MainWindowController.ercTime;
             myStatement="INSERT INTO Event(MenuType,total,Discount,CustomerID,number_of_plates,time,date) VALUES('"+pkg+"','"+total+"','"+discount+"','"+cuid+"','"+nop+"','"+daynight+"','"+date+"')";
             stmt = con.createStatement();
-            psn = con.prepareStatement(myStatement);
+            PreparedStatement psn = con.prepareStatement(myStatement);
             psn.execute();
 
                 myStatement="select MAX(EventID) AS id from Event";
