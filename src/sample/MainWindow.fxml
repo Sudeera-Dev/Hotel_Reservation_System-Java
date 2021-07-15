@@ -557,7 +557,7 @@
                               <Font name="Gadugi Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="repTI" layoutX="642.0" layoutY="509.0" text="Label">
+                        <Label fx:id="repTI" layoutX="604.0" layoutY="509.0" text="Label">
                            <font>
                               <Font name="Gadugi Bold" size="18.0" />
                            </font></Label>

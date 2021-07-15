@@ -12,7 +12,8 @@ public class CheckOutProcess {
 
 
     private String coDate,coTime,ciDate,CusName;
-    private long days=0, total=0;
+    private long days=0;
+    private float total=0;
 
     CheckOutProcess(String coDate,String coTime){
         this.coDate =coDate;
@@ -25,7 +26,7 @@ public class CheckOutProcess {
         return myConn;
     }
 
-    public String mainProcess(){
+    public Float mainProcess(){
         return validateInputs();
     }
 
@@ -39,7 +40,7 @@ public class CheckOutProcess {
         }
     }
 
-    private String validateInputs(){
+    private Float validateInputs(){
         String myStatement;
 
         if(!(coDate.equals("") || coTime.equals(""))){
@@ -62,7 +63,7 @@ public class CheckOutProcess {
 
                     days = Period.between(localDate1, localDate2).getDays();
                     total = days * selectPrice(rs.getInt("RoomNo"));
-                    return "Rs. "+ total;
+                    return total;
 
                 }
 
@@ -114,7 +115,7 @@ public class CheckOutProcess {
 
 
 
-        String queryinsret = "insert into ledger (Description,paid,Date,CustomerID,BillID) values ('Room Reservation','"+total+"','"+coDate+"','"+CusName+"','"+Bill+"')";
+        String queryinsret = "insert into ledger (Description,paid,Date,CustomerID,BillID) values ('Room Reservation','"+total+"','"+MainWindowController.cuDate+"','"+CusName+"','"+Bill+"')";
         try {
             PreparedStatement pstn = con.prepareStatement(queryinsret);
 

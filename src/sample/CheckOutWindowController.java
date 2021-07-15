@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -24,6 +25,8 @@ public class CheckOutWindowController implements Initializable{
     DBconnect mdc = new DBconnect();
     Connection con = getConnection();
     Statement stmt;
+
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
 
     @FXML Label rmNo,coName,coAdd,coTime,coId,coVehino,coSelroom,coTp,ciTotal,coRes,ciTotal1,coTime1;
     @FXML TextField cooTime;
@@ -51,7 +54,7 @@ public class CheckOutWindowController implements Initializable{
         conTime = cooTime.getText();
         conDate = date.format(cooDate.getValue());
         CheckOutProcess co = new CheckOutProcess(conDate,conTime);
-        ciTotal.setText(co.mainProcess());
+        ciTotal.setText(decimalFormat.format(co.mainProcess()));
 
 
     }
@@ -73,7 +76,7 @@ public class CheckOutWindowController implements Initializable{
                 System.out.println(i);
                 if(i == 1) {
                     rmReservePanel.toFront();
-                    ciTotal1.setText(rs.getString("Amount"));
+                    ciTotal1.setText(decimalFormat.format(rs.getFloat("Amount")));
                     coTime1.setText(rs.getString("Check_out_date"));
                     coPan2.setVisible(true);
                     coPan1.setVisible(false);
@@ -150,7 +153,7 @@ public class CheckOutWindowController implements Initializable{
         conTime = cooTime.getText();
         conDate = date.format(cooDate.getValue());
         CheckOutProcess co = new CheckOutProcess(conDate,conTime);
-        ciTotal.setText(co.mainProcess());
+        ciTotal.setText("Rs. "+decimalFormat.format(co.mainProcess()));
 
     }
 
@@ -170,7 +173,7 @@ public class CheckOutWindowController implements Initializable{
         conTime = cooTime.getText();
         conDate = date.format(cooDate.getValue());
         CheckOutProcess co = new CheckOutProcess(conDate,conTime);
-        ciTotal.setText(co.mainProcess());
+        ciTotal.setText("Rs. "+decimalFormat.format(co.mainProcess()));
         coRes.setText( co.checkout());
 
 

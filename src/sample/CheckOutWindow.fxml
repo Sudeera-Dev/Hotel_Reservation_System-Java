@@ -37,12 +37,12 @@
                   </Button>
                   <Pane fx:id="rmReservePanel" layoutX="374.0" layoutY="21.0" prefHeight="94.0" prefWidth="327.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                      <children>
-                        <Label layoutX="23.0" layoutY="26.0" text="Total    :">
+                        <Label layoutX="23.0" layoutY="26.0" text="Total :">
                            <font>
                               <Font name="Gadugi Bold" size="30.0" />
                            </font>
                         </Label>
-                        <Label fx:id="ciTotal1" layoutX="153.0" layoutY="26.0" text="dfdfdf">
+                        <Label fx:id="ciTotal1" layoutX="131.0" layoutY="27.0" text="dfdfdf">
                            <font>
                               <Font name="Gadugi Bold" size="30.0" />
                            </font>

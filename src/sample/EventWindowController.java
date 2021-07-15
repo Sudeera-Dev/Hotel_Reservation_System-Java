@@ -19,12 +19,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class EventWindowController  implements Initializable {
     DBconnect mdc = new DBconnect();
     Connection con = getConnection();
     Statement stmt;
+
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
 
     @FXML Label evName,evId,evAdd,evTp,evPkg,evNop,evTitle,evTotal,evPaid,evTbp,evTotal1;
     @FXML TextField evPay;
@@ -66,7 +69,7 @@ public class EventWindowController  implements Initializable {
 
                 }
                 evNop.setText(rs.getString("number_of_plates"));
-                evTotal.setText(rs.getString("Amount"));
+                evTotal.setText("Rs. "+decimalFormat.format(rs.getFloat("Amount")));
                 String my="select * from ledger,bill where ledger.BillID=bill.BillID and ledger.BillID='"+rs.getString("bill.BillID")+"'";
                 float total=0,tbp=0;
                 try {
@@ -78,15 +81,15 @@ public class EventWindowController  implements Initializable {
                     tbp=rs.getFloat("Amount")-total;
                     if(total >= rs.getFloat("Amount")){
                         totPaidPanel.toFront();
-                        evTotal1.setText(rs.getString("Amount"));
+                        evTotal1.setText("Rs. "+decimalFormat.format(rs.getFloat("Amount")));
                     }
 
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-                evPaid.setText(String.valueOf(total));
-                evTbp.setText(String.valueOf(tbp));
-                evPay.setText(String.valueOf(tbp));
+                evPaid.setText("Rs. "+decimalFormat.format(total));
+                evTbp.setText("Rs. "+decimalFormat.format(tbp));
+                evPay.setText(decimalFormat.format(tbp));
 
 
 

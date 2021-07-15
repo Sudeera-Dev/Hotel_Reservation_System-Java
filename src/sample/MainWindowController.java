@@ -21,6 +21,7 @@ import javax.swing.event.ChangeListener;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -30,6 +31,7 @@ public class MainWindowController implements Initializable {
     DBconnect mdc = new DBconnect();
     Connection con = getConnection();
     Statement stmt;
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
 
 
     ObservableList<String> pkgsList = FXCollections.observableArrayList("Package 1","Package 2","Package 3");
@@ -198,7 +200,7 @@ public class MainWindowController implements Initializable {
     }
 
     private void roomReserveSetter(String myStatement) throws SQLException {
-        resetButtons();
+        resetButtons1();
         stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(myStatement);
         while (rs.next()) {
@@ -259,7 +261,7 @@ public class MainWindowController implements Initializable {
     private void reservedRoom() {
 
         String myStatement;
-        myStatement="select * from reservation where Check_in_date <= '"+date.format(now)+"' and  Check_out_date >= '"+date.format(now)+"' or Check_out_date is NULL";
+        myStatement="select * from reservation where (Check_in_date <= '"+date.format(now)+"' and  Check_out_date >= '"+date.format(now)+"') or (Check_in_date <= '"+date.format(now)+"' and  Check_out_date is NULL)";
 
         neTime=time.format(now);
         nDate=date.format(now);
@@ -346,7 +348,7 @@ public class MainWindowController implements Initializable {
         String tp=ciTp.getText();
         int nog = Integer.parseInt(ciNoguest.getText());
 
-        CheckinProcess cp = new CheckinProcess(name,id,add,vehino,tp,neTime,nDate,room,cuDate);
+        CheckinProcess cp = new CheckinProcess(name,id,add,vehino,tp,neTime,nDate,room,cuDate,nog);
         ciResult.setText(cp.mainProcess());
 
     }
@@ -386,7 +388,7 @@ public class MainWindowController implements Initializable {
 
             String myStatement;
 
-            myStatement="select * from reservation where Check_in_date <= '"+nDate+"' and Check_out_date >= '"+nDate+"' or Check_out_date is NULL";
+            myStatement="select * from reservation where (Check_in_date <= '"+nDate+"' and Check_out_date >= '"+nDate+"') or (Check_in_date <= '"+nDate+"' and  Check_out_date is NULL)";
 
 
             try {
@@ -401,6 +403,50 @@ public class MainWindowController implements Initializable {
     }
 
     private void resetButtons(){
+        if(ro1 != 3){
+            r1.setStyle("-fx-background-color: green");
+            ro1=0;
+        }
+        if(ro2 != 3){
+            r2.setStyle("-fx-background-color: green");
+            ro2=0;
+        }
+        if(ro3 != 3){
+            r3.setStyle("-fx-background-color: green");
+            ro3=0;
+        }
+        if(ro4 != 3){
+            r4.setStyle("-fx-background-color: green");
+            ro4=0;
+        }
+        if(ro5 != 3){
+            r5.setStyle("-fx-background-color: green");
+            ro5=0;
+        }
+        if(ro6 != 3){
+            r6.setStyle("-fx-background-color: green");
+            ro7=0;
+        }
+        if(ro8 != 3){
+            r8.setStyle("-fx-background-color: green");
+            ro8=0;
+        }
+        if(ro9 != 3){
+            r9.setStyle("-fx-background-color: green");
+            ro9=0;
+        }
+        if(ro10 != 3){
+            r10.setStyle("-fx-background-color: green");
+            ro10=0;
+        }
+        if(ro7 != 3){
+            r7.setStyle("-fx-background-color: green");
+            ro7=0;
+        }
+
+    }
+
+    private void resetButtons1(){
         if(ro1 == 3){
             r1.setStyle("-fx-background-color: green");
             ro1=0;
@@ -887,7 +933,7 @@ public class MainWindowController implements Initializable {
                         throwables.printStackTrace();
                     }
 
-                    Event ev = new Event(rs.getString("event.EventID"),rs.getString("event.date"),rs.getString("event.time"),rs.getString("event.MenuType"),rs.getString("customer.CustomerID"),rs.getString("customer.Name"),rs.getString("bill.Amount"),String.valueOf(tbp));
+                    Event ev = new Event(rs.getString("event.EventID"),rs.getString("event.date"),rs.getString("event.time"),rs.getString("event.MenuType"),rs.getString("customer.CustomerID"),rs.getString("customer.Name"),decimalFormat.format(rs.getFloat("bill.Amount")),decimalFormat.format(tbp));
                     seEvTable.getItems().add(ev);
                 }
 
@@ -942,7 +988,7 @@ public class MainWindowController implements Initializable {
 
         String type = repType.getValue().toString();
         if(type.equals("All")){
-            return "";
+            return " ";
 
         }else if(type.equals("Event Reservation")){
             return " and Description like 'Event Reservation' " ;
@@ -950,7 +996,7 @@ public class MainWindowController implements Initializable {
         }else if(type.equals("Room Reservation")){
            return  " and Description like 'Room Reservation' ";
         }else{
-           return "";
+           return " ";
         }
 
     }
@@ -988,7 +1034,7 @@ public class MainWindowController implements Initializable {
         }else if(month.equals("December")){
             return " and ledger.Date >= '"+year+"/12/01' and ledger.Date <= '"+year+"/12/31'";
         }else{
-            return "";
+            return " ";
         }
 
 
@@ -1000,11 +1046,11 @@ public class MainWindowController implements Initializable {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(myStatement);
             while (rs.next()) {
-                Ledger ll=new Ledger(rs.getString("LedgerID"),rs.getString("Description"),rs.getString("customer.CustomerID"),rs.getString("Name"),rs.getString("ledger.Date"),rs.getString("paid"));
+                Ledger ll=new Ledger(rs.getString("LedgerID"),rs.getString("Description"),rs.getString("customer.CustomerID"),rs.getString("Name"),rs.getString("ledger.Date"),decimalFormat.format(rs.getFloat("paid")));
                 repTable.getItems().add(ll);
                 total += Float.parseFloat(rs.getString("paid"));
             }
-            repTI.setText(String.valueOf(total));
+            repTI.setText("Rs. "+decimalFormat.format(total));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
