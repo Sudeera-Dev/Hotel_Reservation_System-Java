@@ -401,6 +401,28 @@ public class MainWindowController implements Initializable {
 
     }
 
+    private void reservedRoomgetter(){
+        String nTime = ciTime.getText();
+
+        if(nTime.length() == 5){
+            neTime = nTime;
+            nDate = date.format(ciDate.getValue());
+
+            String myStatement;
+
+            myStatement="select * from reservation where (Check_in_date <= '"+nDate+"' and Check_out_date >= '"+nDate+"') or (Check_in_date <= '"+nDate+"' and  Check_out_date is NULL)";
+
+
+            try {
+                roomReserveSetter(myStatement);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            System.out.println(myStatement);
+        }
+    }
+
     private void resetButtons(){
         if(ro1 != 3){
             r1.setStyle("-fx-background-color: green");
@@ -496,7 +518,7 @@ public class MainWindowController implements Initializable {
         }else if(ro7 == 0){
 
             resetButtons();
-            reservedRoom();
+            reservedRoomgetter();
 
             ciDprice.setText("Rs. 1500.00 per day");
             r7.setStyle("-fx-background-color: #dede01");
@@ -520,7 +542,7 @@ public class MainWindowController implements Initializable {
             ro1 = 0;
         }else if(ro1 == 0){
             resetButtons();
-            reservedRoom();
+            reservedRoomgetter();
 
             ciDprice.setText("Rs. 3000.00 per day");
             r1.setStyle("-fx-background-color: #dede01");
@@ -544,7 +566,7 @@ public class MainWindowController implements Initializable {
             ro2 = 0;
         }else if(ro2 == 0){
             resetButtons();
-            reservedRoom();
+            reservedRoomgetter();
 
             ciDprice.setText("Rs. 3000.00 per day");
             r2.setStyle("-fx-background-color: #dede01");
@@ -568,7 +590,7 @@ public class MainWindowController implements Initializable {
             ro3 = 0;
         }else if(ro3 == 0){
             resetButtons();
-            reservedRoom();
+            reservedRoomgetter();
 
             ciDprice.setText("Rs. 3000.00 per day");
             r3.setStyle("-fx-background-color: #dede01");
@@ -592,13 +614,13 @@ public class MainWindowController implements Initializable {
             ro4 = 0;
         }else if(ro4 == 0){
             resetButtons();
-            reservedRoom();
+            reservedRoomgetter();
 
             ciDprice.setText("Rs. 1000.00 per day");
             r4.setStyle("-fx-background-color: #dede01");
             ro4 =1;
             ciSelroom.setText("Room 4 - non/AC - Single Bed");
-        }else if(ro1== 4){
+        }else if(ro4== 3){
             reservationID = ros4;
 
             Parent root2 = FXMLLoader.load(getClass().getResource("CheckoutWindow.fxml"));
@@ -616,7 +638,7 @@ public class MainWindowController implements Initializable {
             ro5 = 0;
         }else if(ro5 == 0){
             resetButtons();
-            reservedRoom();
+            reservedRoomgetter();
 
             ciDprice.setText("Rs. 1000.00 per day");
             r5.setStyle("-fx-background-color: #dede01");
@@ -640,7 +662,7 @@ public class MainWindowController implements Initializable {
             ro6 = 0;
         }else if(ro6 == 0){
             resetButtons();
-            reservedRoom();
+            reservedRoomgetter();
 
             ciDprice.setText("Rs. 1000.00 per day");
             r6.setStyle("-fx-background-color: #dede01");
@@ -664,7 +686,7 @@ public class MainWindowController implements Initializable {
             ro8 = 0;
         }else if(ro8 == 0){
             resetButtons();
-            reservedRoom();
+            reservedRoomgetter();
 
             ciDprice.setText("Rs. 1500.00 per day");
             r8.setStyle("-fx-background-color: #dede01");
@@ -688,7 +710,7 @@ public class MainWindowController implements Initializable {
             ro9 = 0;
         }else if(ro9 == 0){
             resetButtons();
-            reservedRoom();
+            reservedRoomgetter();
 
             ciDprice.setText("Rs. 1500.00 per day");
             r9.setStyle("-fx-background-color: #dede01");
@@ -712,7 +734,7 @@ public class MainWindowController implements Initializable {
             ro10 = 0;
         }else if(ro10 == 0){
             resetButtons();
-            reservedRoom();
+            reservedRoomgetter();
 
             ciDprice.setText("Rs. 1500.00 per day");
             r10.setStyle("-fx-background-color: #dede01");

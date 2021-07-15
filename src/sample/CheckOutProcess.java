@@ -1,5 +1,12 @@
 package sample;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
@@ -124,7 +131,17 @@ public class CheckOutProcess {
             throwables.printStackTrace();
         }
 
-
+        Parent root2 = null;
+        try {
+            root2 = FXMLLoader.load(getClass().getResource("ResultWindow.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("Result");
+        stage.setScene(new Scene(root2));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
         return "success";
     }
 
