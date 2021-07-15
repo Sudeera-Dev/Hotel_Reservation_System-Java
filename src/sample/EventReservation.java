@@ -1,7 +1,6 @@
 package sample;
 
-import java.sql.Connection;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -61,7 +60,100 @@ public class EventReservation {
     }
 
     private String resreveDate(){
+        int flag=0,cuid=0,resid=0,bilid=0,eid=0;
+        String myStatement;
+
+        myStatement = "select * from customer where NIC = '"+Id+"'";
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(myStatement);
+            while (rs.next()) {
+                flag=1;
+                cuid=rs.getInt("CustomerID");
+            }
+
+            if(flag==0){
+                myStatement = "INSERT INTO customer ( Name,Address,TP,NIC) VALUES('"+name+"','"+add+"','"+tp+"','"+Id+"')";
+
+                stmt = con.createStatement();
+                PreparedStatement psn = con.prepareStatement(myStatement);
+                psn.execute();
+
+                myStatement="select MAX(CustomerID) AS id from customer";
+                stmt = con.createStatement();
+                ResultSet rs2 = stmt.executeQuery(myStatement);
+                while (rs2.next()) {
+                    cuid=rs2.getInt("id");
+                    myStatement="update customer set TP='"+tp+"' where CustomerID='"+cuid+"'";
+                    PreparedStatement pstn = con.prepareStatement(myStatement);
+                    pstn.executeUpdate();
+                }
+
+            }
+
+
+            myStatement="INSERT INTO Customer ( Name,Address,TP,NIC) VALUES('"+name+"','"+add+"','"+tp+"','"+Id+"')";
+            stmt = con.createStatement();
+            PreparedStatement psn = con.prepareStatement(myStatement);
+            psn.execute();
+
+                myStatement="select MAX(CustomerID) AS id from customer";
+                stmt = con.createStatement();
+                ResultSet rs3 = stmt.executeQuery(myStatement);
+                while (rs3.next()) {
+                    cuid=rs3.getInt("id");
+                }
+
+            String date = MainWindowController.ercDate;
+            String daynight = MainWindowController.ercTime;
+            myStatement="INSERT INTO Event(MenuType,total,Discount,CustomerID,number_of_plates,time,date) VALUES('"+pkg+"','"+total+"','"+discount+"','"+cuid+"','"+nop+"','"+daynight+"','"+date+"')";
+            stmt = con.createStatement();
+            psn = con.prepareStatement(myStatement);
+            psn.execute();
+
+                myStatement="select MAX(EventID) AS id from Event";
+                stmt = con.createStatement();
+                ResultSet rs4 = stmt.executeQuery(myStatement);
+                while (rs4.next()) {
+                    eid=rs4.getInt("id");
+                }
+
+
+
+            String bdate = MainWindowController.cuDate;
+            myStatement="INSERT INTO bill ( Date,Amount,CustomerID) VALUES('"+bdate+"','"+total+"','"+cuid+"')";
+            stmt = con.createStatement();
+            psn = con.prepareStatement(myStatement);
+            psn.execute();
+
+                myStatement="select MAX(BillID) AS id from bill";
+                stmt = con.createStatement();
+                ResultSet rs5 = stmt.executeQuery(myStatement);
+                while (rs5.next()) {
+                    bilid=rs5.getInt("id");
+                }
+
+            myStatement="INSERT INTO bill_event ( Bill_id,Event_id) VALUES('"+bilid+"','"+eid+"')";
+            stmt = con.createStatement();
+            psn = con.prepareStatement(myStatement);
+            psn.execute();
+
+            myStatement="INSERT INTO ledger(Description,paid,Date,CustomerID,BillID ) VALUES('event reservation','"+payment+"','"+bdate+"','"+cuid+"','"+bilid+"')";
+            stmt = con.createStatement();
+            psn = con.prepareStatement(myStatement);
+            psn.execute();
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+
+
 
         return "success";
+
     }
+
 }
