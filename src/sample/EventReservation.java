@@ -162,6 +162,15 @@ public class EventReservation {
     }
 
     public void Payment(){
+        String myStatement="INSERT INTO ledger(Description,paid,Date,CustomerID,BillID ) VALUES('Event Reservation','"+payment+"','"+ MainWindowController.cuDate +"','"+ MainWindowController.cId +"','"+Id+"')";
+        try {
+            stmt = con.createStatement();
+            PreparedStatement psn = con.prepareStatement(myStatement);
+            psn.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 
     }
 
