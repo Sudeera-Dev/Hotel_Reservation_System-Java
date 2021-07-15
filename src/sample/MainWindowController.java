@@ -844,7 +844,7 @@ public class MainWindowController implements Initializable {
         double payment= 0;
         if(isNumeric(erPayment.getText())) {
             if (!erPayment.getText().equals("")) {
-                payment = -Double.parseDouble(erPayment.getText());
+                payment = Double.parseDouble(erPayment.getText());
             }
         }
 

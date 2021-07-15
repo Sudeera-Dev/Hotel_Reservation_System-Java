@@ -14,6 +14,11 @@ public class EventReservation {
     private double discount,total,payment;
     private int pkg;
 
+    EventReservation(String Id,double payment){
+        this.Id=Id;
+        this.payment=payment;
+    }
+
     EventReservation(String name,String add,String nop,String Id,String tp,double discount,double total,double payment,int pkg){
         this.name=name;
         this.add=add;
@@ -138,7 +143,7 @@ public class EventReservation {
             psn = con.prepareStatement(myStatement);
             psn.execute();
 
-            myStatement="INSERT INTO ledger(Description,paid,Date,CustomerID,BillID ) VALUES('event reservation','"+payment+"','"+bdate+"','"+cuid+"','"+bilid+"')";
+            myStatement="INSERT INTO ledger(Description,paid,Date,CustomerID,BillID ) VALUES('Event Reservation','"+payment+"','"+bdate+"','"+cuid+"','"+bilid+"')";
             stmt = con.createStatement();
             psn = con.prepareStatement(myStatement);
             psn.execute();
@@ -153,6 +158,10 @@ public class EventReservation {
 
 
         return "success";
+
+    }
+
+    public void Payment(){
 
     }
 

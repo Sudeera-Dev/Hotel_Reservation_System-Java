@@ -89,7 +89,7 @@ public class EventWindowController  implements Initializable {
                 }
                 evPaid.setText("Rs. "+decimalFormat.format(total));
                 evTbp.setText("Rs. "+decimalFormat.format(tbp));
-                evPay.setText(decimalFormat.format(tbp));
+                evPay.setText(String.valueOf(tbp));
 
 
 
@@ -112,6 +112,15 @@ public class EventWindowController  implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    }
+
+    public void PayOnAction(ActionEvent event) throws IOException {
+        if(!(evPay.getText().equals("")) && MainWindowController.isNumeric(evPay.getText())) {
+            EventReservation er = new EventReservation(String.valueOf(MainWindowController.eventID), Double.valueOf(evPay.getText()));
+            er.Payment();
+            getDetails();
+        }
+
     }
 
 }
