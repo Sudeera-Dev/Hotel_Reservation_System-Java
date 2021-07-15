@@ -118,7 +118,8 @@ public class EventWindowController  implements Initializable {
         if(!(evPay.getText().equals("")) && MainWindowController.isNumeric(evPay.getText())) {
             EventReservation er = new EventReservation(String.valueOf(MainWindowController.eventID), Double.valueOf(evPay.getText()));
             er.Payment();
-            getDetails();
+            Parent root2 = FXMLLoader.load(getClass().getResource("ResultWindow.fxml"));
+
         }
 
     }

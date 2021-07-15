@@ -1,5 +1,12 @@
 package sample;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -148,13 +155,18 @@ public class EventReservation {
             psn = con.prepareStatement(myStatement);
             psn.execute();
 
+            Parent root2 = FXMLLoader.load(getClass().getResource("ResultWindow.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Result");
+            stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-
-
 
 
         return "success";
@@ -162,13 +174,21 @@ public class EventReservation {
     }
 
     public void Payment(){
-        String myStatement="INSERT INTO ledger(Description,paid,Date,CustomerID,BillID ) VALUES('Event Reservation','"+payment+"','"+ MainWindowController.cuDate +"','"+ MainWindowController.cId +"','"+Id+"')";
+        String myStatement="INSERT INTO ledger(Description,paid,Date,CustomerID,BillID ) VALUES('Event Reservation','"+payment+"','"+ MainWindowController.cuDate +"','"+ MainWindowController.cId +"','"+MainWindowController.billId+"')";
         try {
             stmt = con.createStatement();
             PreparedStatement psn = con.prepareStatement(myStatement);
             psn.execute();
+            Parent root2 = FXMLLoader.load(getClass().getResource("ResultWindow.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Result");
+            stage.setScene(new Scene(root2));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
 

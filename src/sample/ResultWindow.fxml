@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ResultWindowController">
+   <Pane layoutX="14.0" layoutY="17.0" prefHeight="173.0" prefWidth="602.0"
+         style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
+      <Button fx:id="ok" layoutX="252.0" layoutY="87.0" mnemonicParsing="false" onAction="#okonAction"
+              prefHeight="62.0" prefWidth="99.0" stylesheets="@myStyle.css" text="OK" textFill="WHITE">
+         <font>
+            <Font name="Gadugi Bold" size="16.0"/>
+         </font>
+         <styleClass>
+            <String fx:value="clear_btn"/>
+            <String fx:value="checkout_btn"/>
+         </styleClass>
+      </Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="26.0" prefHeight="34.0"
+             prefWidth="527.0" text="successful" textAlignment="CENTER">
+         <font>
+            <Font name="Gadugi Bold" size="23.0"/>
+         </font>
+      </Label>
+   </Pane>
+</AnchorPane>

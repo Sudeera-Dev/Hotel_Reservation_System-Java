@@ -1,5 +1,12 @@
 package sample;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,12 +19,12 @@ public class CheckinProcess {
     Connection con = getConnection();
     Statement stmt;
 
-    private String name,id,add,vehino,tp,neTime,nDate,cudate;
-    private int room, guest=0;
+    private String name,id,add,vehino,tp,neTime,nDate,cudate,guest;
+    private int room;
     private String type;
 
 
-    CheckinProcess(String name,String id,String add,String vehino,String tp,String neTime,String nDate,int room,String cuDate,int guest){
+    CheckinProcess(String name,String id,String add,String vehino,String tp,String neTime,String nDate,int room,String cuDate,String guest){
         this.name=name;
         this.id=id;
         this.add= add;
@@ -35,12 +42,12 @@ public class CheckinProcess {
         return myConn;
     }
 
-    public String mainProcess(){
+    public String mainProcess() throws IOException {
         return validateInputs();
     }
 
-    private String validateInputs(){
-        if (name.equals("") || id.equals("") || add.equals("") || tp.equals("") || guest == 0) {
+    private String validateInputs() throws IOException {
+        if (name.equals("") || id.equals("") || add.equals("") || tp.equals("") || guest.equals("")) {
             return "one or more fields are empty";
         } else {
             if(room != 0){
@@ -63,7 +70,7 @@ public class CheckinProcess {
         return CheckIn();
     }
 
-    private String CheckIn(){
+    private String CheckIn() throws IOException {
         int flag=0,cuid=0,resid=0,bilid=0;
         String myStatement;
         myStatement = "select * from customer where NIC = '"+id+"'";
@@ -134,7 +141,12 @@ public class CheckinProcess {
             throwables.printStackTrace();
         }
 
-
+        Parent root2 = FXMLLoader.load(getClass().getResource("ResultWindow.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Result");
+        stage.setScene(new Scene(root2));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
         return "success";
     }
 }

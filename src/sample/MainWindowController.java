@@ -335,7 +335,7 @@ public class MainWindowController implements Initializable {
 
     }
 
-    public void ciCheckinOnAction(ActionEvent event){
+    public void ciCheckinOnAction(ActionEvent event) throws IOException {
 
         int room = getSelectedRoom();
 
@@ -344,7 +344,7 @@ public class MainWindowController implements Initializable {
         String add=ciAdd.getText();
         String vehino=ciVehino.getText();
         String tp=ciTp.getText();
-        int nog = Integer.parseInt(ciNoguest.getText());
+        String nog = ciNoguest.getText();
 
         CheckinProcess cp = new CheckinProcess(name,id,add,vehino,tp,neTime,nDate,room,cuDate,nog);
         ciResult.setText(cp.mainProcess());
@@ -836,7 +836,7 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    public void erCheckoutrOnAction(ActionEvent event){
+    public void erCheckoutrOnAction(ActionEvent event) throws IOException {
         String name=erName.getText();
         String add=erAdd.getText();
         String nop=erNop.getText();
@@ -851,6 +851,7 @@ public class MainWindowController implements Initializable {
 
         EventReservation er = new EventReservation(name,add,nop,Id,tp,discount,total,payment,pkg);
         erError.setText(er.mainProcess());
+
 
     }
 
