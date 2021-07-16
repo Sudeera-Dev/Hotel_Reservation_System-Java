@@ -17,7 +17,7 @@ public class DBconnect {
     }
 
     public Connection getMyConnection(){
-        String url = "jdbc:mysql://localhost:3306/rainbow_hotel";
+        String url = "jdbc:mysql://localhost:3306/rainbow_hotel?serverTimezone=UTC";
         String user = "root";
         String pw = "";
 
