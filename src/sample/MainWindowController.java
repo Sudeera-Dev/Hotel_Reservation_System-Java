@@ -976,7 +976,7 @@ public class MainWindowController implements Initializable {
                 String all = rs.getString("CustomerID")+" "+rs.getString("Name")+" "+rs.getString("Address")+" "+" "+rs.getString("VehicleNum")+" "+rs.getString("TP")+" "+rs.getString("NIC");
                 int sp=searchProcess(all);
                 if(sp == 1){
-                    customer cu = new customer(rs.getString("CustomerID"),rs.getString("Name"),rs.getString("Address"),rs.getString("VehicleNum"),rs.getString("TP"),rs.getString("NIC"));
+                    customer cu = new customer(rs.getString("CustomerID"),rs.getString("Name"),rs.getString("Address"),rs.getString("TP"),rs.getString("VehicleNum"),rs.getString("NIC"));
                     seCuTable.getItems().add(cu);
                 }
 
