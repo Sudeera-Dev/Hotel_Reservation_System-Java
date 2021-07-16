@@ -42,149 +42,6 @@
             </Pane>
          </children>
       </Group>
-      <Pane fx:id="repPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
-         <children>
-            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
-               <children>
-                  <Pane layoutX="3.0" layoutY="115.0" prefHeight="561.0" prefWidth="796.0">
-                     <children>
-                        <TableView fx:id="repTable" layoutX="23.0" layoutY="13.0" prefHeight="470.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
-                           <columns>
-                              <TableColumn fx:id="repID" prefWidth="48.0" text="ID" />
-                              <TableColumn fx:id="repDesc" prefWidth="190.0" text="Description" />
-                              <TableColumn prefWidth="180.0" text="Customer">
-                                 <columns>
-                                    <TableColumn fx:id="repCuID" prefWidth="47.0" text="ID" />
-                                    <TableColumn fx:id="repCuName" prefWidth="138.0" text="Name" />
-                                 </columns></TableColumn>
-                              <TableColumn fx:id="repDate" prefWidth="122.0" text="Date" />
-                              <TableColumn fx:id="repPaid" prefWidth="202.0" text="Paid" />
-                           </columns>
-                        </TableView>
-                        <Label layoutX="464.0" layoutY="509.0" text="Total Income :">
-                           <font>
-                              <Font name="Gadugi Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="repTI" layoutX="604.0" layoutY="509.0" text="Label">
-                           <font>
-                              <Font name="Gadugi Bold" size="18.0" />
-                           </font></Label>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="27.0" layoutY="16.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: #0c447b; -fx-background-radius: 30;">
-                     <children>
-                        <Button fx:id="repView" layoutX="518.0" layoutY="20.0" mnemonicParsing="false" onAction="#repViewOnAction" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="View">
-                           <font>
-                              <Font name="Gadugi Bold" size="14.0" />
-                           </font>
-                        </Button>
-                        <TextField fx:id="repYear" layoutX="24.0" layoutY="20.0" prefHeight="38.0" prefWidth="180.0" promptText="Year" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <ChoiceBox fx:id="repMonth" layoutX="225.0" layoutY="20.0" prefHeight="38.0" prefWidth="94.0" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="timebtn" stylesheets="@myStyle.css" />
-                        <ChoiceBox fx:id="repType" layoutX="341.0" layoutY="20.0" prefHeight="38.0" prefWidth="154.0" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="timebtn" stylesheets="@myStyle.css" />
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-            <Label layoutX="357.0" layoutY="24.0" text="Reports">
-               <font>
-                  <Font name="Gadugi Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane fx:id="sPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
-         <children>
-            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
-               <children>
-                  <Pane layoutX="27.0" layoutY="16.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: #0c447b; -fx-background-radius: 30;">
-                     <children>
-                        <Button fx:id="seSearch" layoutX="644.0" layoutY="20.0" mnemonicParsing="false" onAction="#seSearchOnAction" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="Search">
-                           <font>
-                              <Font name="Gadugi Bold" size="14.0" />
-                           </font>
-                        </Button>
-                        <TextField fx:id="seSearchId" layoutX="24.0" layoutY="20.0" prefHeight="38.0" prefWidth="492.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                        <ChoiceBox fx:id="seType" layoutX="539.0" layoutY="19.0" prefHeight="38.0" prefWidth="87.0" style="-fx-background-radius: 30px;" />
-                     </children>
-                  </Pane>
-                  <Pane fx:id="seRe" layoutY="115.0" prefHeight="561.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9;">
-                     <children>
-                        <TableView fx:id="seReTable" layoutX="24.0" layoutY="14.0" prefHeight="534.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
-                           <columns>
-                              <TableColumn fx:id="seReID" prefWidth="37.0" text="ID" />
-                              <TableColumn fx:id="seReType" prefWidth="52.0" text="Type" />
-                              <TableColumn fx:id="seReRm" prefWidth="67.0" text="Room No" />
-                              <TableColumn fx:id="seReNg" prefWidth="91.0" text="No. Guest" />
-                              <TableColumn fx:id="seCuTp1" prefWidth="134.0" text="Customer">
-                                 <columns>
-                                    <TableColumn fx:id="seRecID" prefWidth="41.0" text="ID" />
-                                    <TableColumn fx:id="seRecName" prefWidth="81.0" text="Name" />
-                                 </columns></TableColumn>
-                              <TableColumn prefWidth="180.0" text="Check In">
-                                 <columns>
-                                    <TableColumn fx:id="seReciDate" prefWidth="108.0" text="Date" />
-                                    <TableColumn fx:id="seReciTime" prefWidth="89.0" text="time" />
-                                 </columns></TableColumn>
-                              <TableColumn prefWidth="167.0" text="Check out">
-                                 <columns>
-                                    <TableColumn fx:id="seRecoDate" prefWidth="108.0" text="Date" />
-                                    <TableColumn fx:id="seRecoTime" prefWidth="89.0" text="time" />
-                                 </columns>
-                              </TableColumn>
-                           </columns>
-                        </TableView>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="seEv" layoutY="115.0" prefHeight="561.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9;">
-                     <children>
-                        <TableView fx:id="seEvTable" layoutX="24.0" layoutY="14.0" prefHeight="534.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
-                           <columns>
-                              <TableColumn fx:id="seEvID" prefWidth="52.0" text="ID" />
-                              <TableColumn fx:id="seEvDate" prefWidth="76.0" text="Date" />
-                              <TableColumn fx:id="seEvTime" prefWidth="64.0" text="Time" />
-                              <TableColumn fx:id="seEvPkg" prefWidth="79.0" text="Package" />
-                              <TableColumn fx:id="seCuEmail11" prefWidth="154.0" text="Customer">
-                                 <columns>
-                                    <TableColumn fx:id="seEvcID" prefWidth="46.0" text="ID" />
-                                    <TableColumn fx:id="seEvcName" prefWidth="112.0" text="Name" />
-                                 </columns></TableColumn>
-                              <TableColumn fx:id="seEvTotal" prefWidth="162.0" text="Total" />
-                              <TableColumn fx:id="seEvTbp" prefWidth="153.0" text="To be paid" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="seCu" layoutY="108.0" prefHeight="568.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9;">
-                     <children>
-                        <TableView fx:id="seCuTable" layoutX="24.0" layoutY="14.0" prefHeight="534.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
-                          <columns>
-                            <TableColumn fx:id="seCuId" prefWidth="46.0" text="ID" />
-                            <TableColumn fx:id="seCuName" prefWidth="182.0" text="Name" />
-                             <TableColumn fx:id="seCuAdd" prefWidth="228.0" text="Address" />
-                             <TableColumn fx:id="seCuTp" prefWidth="98.0" text="T.P." />
-                              <TableColumn fx:id="seCuVehino" prefWidth="74.0" text="Vehicle ID" />
-                              <TableColumn fx:id="seCuNic" prefWidth="119.0" text="NIC" />
-                          </columns>
-                        </TableView>
-                     </children></Pane>
-               </children>
-            </Pane>
-            <Label layoutX="365.0" layoutY="25.0" text="Search">
-               <font>
-                  <Font name="Gadugi Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
       <Pane fx:id="rsPane" layoutX="200.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="282.0" layoutY="24.0" text="Room Reservation">
@@ -570,6 +427,149 @@
                   </Label>
                </children></Pane>
             <Label layoutX="286.0" layoutY="24.0" text="Event Reservation">
+               <font>
+                  <Font name="Gadugi Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="repPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
+               <children>
+                  <Pane layoutX="3.0" layoutY="115.0" prefHeight="561.0" prefWidth="796.0">
+                     <children>
+                        <TableView fx:id="repTable" layoutX="23.0" layoutY="13.0" prefHeight="470.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
+                           <columns>
+                              <TableColumn fx:id="repID" prefWidth="48.0" text="ID" />
+                              <TableColumn fx:id="repDesc" prefWidth="190.0" text="Description" />
+                              <TableColumn prefWidth="180.0" text="Customer">
+                                 <columns>
+                                    <TableColumn fx:id="repCuID" prefWidth="47.0" text="ID" />
+                                    <TableColumn fx:id="repCuName" prefWidth="138.0" text="Name" />
+                                 </columns></TableColumn>
+                              <TableColumn fx:id="repDate" prefWidth="122.0" text="Date" />
+                              <TableColumn fx:id="repPaid" prefWidth="202.0" text="Paid" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="464.0" layoutY="509.0" text="Total Income :">
+                           <font>
+                              <Font name="Gadugi Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="repTI" layoutX="604.0" layoutY="509.0" text="Label">
+                           <font>
+                              <Font name="Gadugi Bold" size="18.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="27.0" layoutY="16.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: #0c447b; -fx-background-radius: 30;">
+                     <children>
+                        <Button fx:id="repView" layoutX="518.0" layoutY="20.0" mnemonicParsing="false" onAction="#repViewOnAction" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="View">
+                           <font>
+                              <Font name="Gadugi Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="repYear" layoutX="24.0" layoutY="20.0" prefHeight="38.0" prefWidth="180.0" promptText="Year" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <ChoiceBox fx:id="repMonth" layoutX="225.0" layoutY="20.0" prefHeight="38.0" prefWidth="94.0" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="timebtn" stylesheets="@myStyle.css" />
+                        <ChoiceBox fx:id="repType" layoutX="341.0" layoutY="20.0" prefHeight="38.0" prefWidth="154.0" style="-fx-background-radius: 30px; -fx-background-color: white;" styleClass="timebtn" stylesheets="@myStyle.css" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Label layoutX="357.0" layoutY="24.0" text="Reports">
+               <font>
+                  <Font name="Gadugi Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="sPane" layoutX="201.0" prefHeight="768.0" prefWidth="823.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutX="14.0" layoutY="85.0" prefHeight="671.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9; -fx-background-radius: 30;">
+               <children>
+                  <Pane fx:id="seCu" layoutY="108.0" prefHeight="568.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9;">
+                     <children>
+                        <TableView fx:id="seCuTable" layoutX="24.0" layoutY="14.0" prefHeight="534.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
+                          <columns>
+                            <TableColumn fx:id="seCuId" prefWidth="46.0" text="ID" />
+                            <TableColumn fx:id="seCuName" prefWidth="182.0" text="Name" />
+                             <TableColumn fx:id="seCuAdd" prefWidth="228.0" text="Address" />
+                             <TableColumn fx:id="seCuTp" prefWidth="98.0" text="T.P." />
+                              <TableColumn fx:id="seCuVehino" prefWidth="74.0" text="Vehicle ID" />
+                              <TableColumn fx:id="seCuNic" prefWidth="119.0" text="NIC" />
+                          </columns>
+                        </TableView>
+                     </children></Pane>
+                  <Pane layoutX="27.0" layoutY="16.0" prefHeight="77.0" prefWidth="748.0" style="-fx-background-color: #0c447b; -fx-background-radius: 30;">
+                     <children>
+                        <Button fx:id="seSearch" layoutX="644.0" layoutY="20.0" mnemonicParsing="false" onAction="#seSearchOnAction" prefHeight="38.0" prefWidth="80.0" style="-fx-background-radius: 30px;" stylesheets="@myStyle.css" text="Search">
+                           <font>
+                              <Font name="Gadugi Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="seSearchId" layoutX="24.0" layoutY="20.0" prefHeight="38.0" prefWidth="492.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <ChoiceBox fx:id="seType" layoutX="539.0" layoutY="19.0" prefHeight="38.0" prefWidth="87.0" style="-fx-background-radius: 30px;" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="seRe" layoutY="115.0" prefHeight="561.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9;">
+                     <children>
+                        <TableView fx:id="seReTable" layoutX="24.0" layoutY="14.0" prefHeight="534.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
+                           <columns>
+                              <TableColumn fx:id="seReID" prefWidth="37.0" text="ID" />
+                              <TableColumn fx:id="seReType" prefWidth="90.0" text="Type" />
+                              <TableColumn fx:id="seReRm" prefWidth="58.0" text="Room No" />
+                              <TableColumn fx:id="seReNg" prefWidth="62.0" text="No. Guest" />
+                              <TableColumn fx:id="seCuTp1" prefWidth="134.0" text="Customer">
+                                 <columns>
+                                    <TableColumn fx:id="seRecID" prefWidth="41.0" text="ID" />
+                                    <TableColumn fx:id="seRecName" prefWidth="81.0" text="Name" />
+                                 </columns></TableColumn>
+                              <TableColumn prefWidth="224.0" text="Check In">
+                                 <columns>
+                                    <TableColumn fx:id="seReciDate" prefWidth="108.0" text="Date" />
+                                    <TableColumn fx:id="seReciTime" prefWidth="89.0" text="time" />
+                                 </columns></TableColumn>
+                              <TableColumn prefWidth="170.0" text="Check out">
+                                 <columns>
+                                    <TableColumn fx:id="seRecoDate" prefWidth="108.0" text="Date" />
+                                    <TableColumn fx:id="seRecoTime" prefWidth="89.0" text="time" />
+                                 </columns>
+                              </TableColumn>
+                           </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="seEv" layoutY="115.0" prefHeight="561.0" prefWidth="796.0" style="-fx-background-color: #a3b5d9;">
+                     <children>
+                        <TableView fx:id="seEvTable" layoutX="24.0" layoutY="14.0" prefHeight="534.0" prefWidth="748.0" style="-fx-background-radius: 30px;">
+                           <columns>
+                              <TableColumn fx:id="seEvID" prefWidth="52.0" text="ID" />
+                              <TableColumn fx:id="seEvDate" prefWidth="76.0" text="Date" />
+                              <TableColumn fx:id="seEvTime" prefWidth="64.0" text="Time" />
+                              <TableColumn fx:id="seEvPkg" prefWidth="79.0" text="Package" />
+                              <TableColumn fx:id="seCuEmail11" prefWidth="154.0" text="Customer">
+                                 <columns>
+                                    <TableColumn fx:id="seEvcID" prefWidth="46.0" text="ID" />
+                                    <TableColumn fx:id="seEvcName" prefWidth="112.0" text="Name" />
+                                 </columns></TableColumn>
+                              <TableColumn fx:id="seEvTotal" prefWidth="162.0" text="Total" />
+                              <TableColumn fx:id="seEvTbp" prefWidth="153.0" text="To be paid" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Label layoutX="365.0" layoutY="25.0" text="Search">
                <font>
                   <Font name="Gadugi Bold" size="30.0" />
                </font>
